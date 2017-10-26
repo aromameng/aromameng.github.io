@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="js," />
+  <meta name="keywords" content="vue,nginx," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="记录一些在网上找的和自己的一些实践，主要是javascript代码优化方面。">
-<meta name="keywords" content="js">
+<meta name="description" content="想了解下nginx是怎么做反向代理的，所以就下载了一个在本地搭建环境试试看，我的目标是能运行就行。 本地后端服务器地址是http://localhost:3000，采用nodeJs的框架express搭建 前端打包后的静态文件放在G:\vue-express\dist  nginx下载地址：http://nginx.org/en/download.html  nginx版本： nginx/Wind">
+<meta name="keywords" content="vue,nginx">
 <meta property="og:type" content="article">
-<meta property="og:title" content="javascript 性能优化技巧">
-<meta property="og:url" content="http://yoursite.com/2017/02/24/2017-02-24-javascript_performance optimization/index.html">
+<meta property="og:title" content="nginx代理配置">
+<meta property="og:url" content="http://yoursite.com/2017/10/04/2017-10-04-nginx-proxy-configuration/index.html">
 <meta property="og:site_name" content="花开半夏">
-<meta property="og:description" content="记录一些在网上找的和自己的一些实践，主要是javascript代码优化方面。">
+<meta property="og:description" content="想了解下nginx是怎么做反向代理的，所以就下载了一个在本地搭建环境试试看，我的目标是能运行就行。 本地后端服务器地址是http://localhost:3000，采用nodeJs的框架express搭建 前端打包后的静态文件放在G:\vue-express\dist  nginx下载地址：http://nginx.org/en/download.html  nginx版本： nginx/Wind">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-21T15:06:54.966Z">
+<meta property="og:updated_time" content="2017-10-26T13:58:40.305Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="javascript 性能优化技巧">
-<meta name="twitter:description" content="记录一些在网上找的和自己的一些实践，主要是javascript代码优化方面。">
+<meta name="twitter:title" content="nginx代理配置">
+<meta name="twitter:description" content="想了解下nginx是怎么做反向代理的，所以就下载了一个在本地搭建环境试试看，我的目标是能运行就行。 本地后端服务器地址是http://localhost:3000，采用nodeJs的框架express搭建 前端打包后的静态文件放在G:\vue-express\dist  nginx下载地址：http://nginx.org/en/download.html  nginx版本： nginx/Wind">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/02/24/2017-02-24-javascript_performance optimization/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/10/04/2017-10-04-nginx-proxy-configuration/"/>
 
 
 
 
 
-  <title>javascript 性能优化技巧 | 花开半夏</title>
+  <title>nginx代理配置 | 花开半夏</title>
   
 
 
@@ -253,7 +253,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/24/2017-02-24-javascript_performance optimization/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/04/2017-10-04-nginx-proxy-configuration/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="aroma">
@@ -270,7 +270,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">javascript 性能优化技巧</h1>
+          <h1 class="post-title" itemprop="name headline">nginx代理配置</h1>
         
 
         <div class="post-meta">
@@ -282,8 +282,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-24T00:00:00+08:00">
-                2017-02-24
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-04T00:00:00+08:00">
+                2017-10-04
               </time>
             
 
@@ -305,8 +305,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">javascript</span>
+                  <a href="/categories/其他/" itemprop="url" rel="index">
+                    <span itemprop="name">其他</span>
                   </a>
                 </span>
 
@@ -342,46 +342,78 @@
       
 
       
-        <p>记录一些在网上找的和自己的一些实践，主要是javascript代码优化方面。 <a id="more"></a></p>
-<h3 id="1、for循环"><a href="#1、for循环" class="headerlink" title="1、for循环"></a>1、for循环</h3><hr>
-<p>缓存 data.length</p>
-<pre><code>for(var i = 0, m = data.length; i &lt; m; i++) {
-    //do someting
+        <p>想了解下nginx是怎么做反向代理的，所以就下载了一个在本地搭建环境试试看，我的目标是能运行就行。</p>
+<p>本地后端服务器地址是<code>http://localhost:3000</code>，采用nodeJs的框架express搭建</p>
+<p>前端打包后的静态文件放在<code>G:\vue-express\dist</code></p>
+<ul>
+<li><p>nginx下载地址：<a href="http://nginx.org/en/download.html" target="_blank" rel="external">http://nginx.org/en/download.html</a></p>
+</li>
+<li><p>nginx版本： <code>nginx/Windows-1.12.2</code> </p>
+</li>
+</ul>
+<a id="more"></a>
+<h4 id="nginx配置"><a href="#nginx配置" class="headerlink" title="nginx配置"></a>nginx配置</h4><p>配置文件地址：<code>G:\mySoft\nginx-1.12.2\nginx-1.12.2\conf\nginx.conf</code> （即nginx下载包下的<code>conf/nginx.conf</code>文件）</p>
+<pre><code>server {
+        listen       8088;
+        server_name  localhost;
+
+        #charset koi8-r;
+
+        #access_log  logs/host.access.log  main;
+
+        location / {
+            root   G:/vue-express/dist;
+            index  index.html index.htm; 
+        }
+        location /api {
+            proxy_pass http://127.0.0.1:3000/api;
+        }
 }
-</code></pre><h3 id="2、缓存运算结果"><a href="#2、缓存运算结果" class="headerlink" title="2、缓存运算结果"></a>2、缓存运算结果</h3><hr>
-<p>常用的运算结果，用变量缓存起来</p>
-<h3 id="3、减少对DOM的操作"><a href="#3、减少对DOM的操作" class="headerlink" title="3、减少对DOM的操作"></a>3、减少对DOM的操作</h3><hr>
-<p>DOM操作是非常消耗资源的，以下这些会触发重排的属性或方法，尽量缓存：</p>
-<p><code>offsetTop、offsetLeft、 offsetWidth、offsetHeight、scrollTop、scrollLeft、scrollWidth、scrollHeight、 clientTop、clientLeft、clientWidth、clientHeight、getComputedStyle()</code></p>
-<p>使用DocumentFragment优化多次append</p>
-<pre><code>var frag = document.createDocumentFragment();
-for (var i = 0; i &lt; 1000; i++) {
-  var el = document.createElement(&apos;p&apos;);
-  el.innerHTML = i;
-  frag.appendChild(el);
+</code></pre><p><code>nginx.exe</code> 文件所在文件夹，使用CMD命令，运行<code>start nginx</code>即可开启 nginx 服务。</p>
+<p>浏览器打开<code>http://127.0.0.1:8088/#/</code> 就可以访问到放置在 <code>G:/vue-express/dist</code> 目录下的静态文件，api请求也能正确请求到 <code>http://127.0.0.1:3000</code> 上的资源。</p>
+<h4 id="nginx说明"><a href="#nginx说明" class="headerlink" title="nginx说明"></a>nginx说明</h4><p>网上找的一些资料，待完善</p>
+<pre><code>------nginx.conf文件中的一些配置含义------
+
+    listen: 监听端口，加ssl 为https通信方式。
+
+    server_name:网站服务名，主机头
+
+    error_page:错误页
+
+    location: 虚拟位置，如 “/” 根目录，如“/images/”，“/50x.htm&quot;等等
+
+    root:文件实际位置
+
+    index:起始页
+
+    ssl_certificate：ssl证书存放位置（由证书颁发机构提供）
+
+    ssl_certificate_key:ssl证书私钥存放位置（由证书颁发机构提供）
+
+------命令------
+
+    启动nginx： `start nginx`
+
+    停止nginx：`nginx -s stop` 或 `nginx -s quit`
+
+    nginx停止命令stop与quit参数的区别在于stop是快速停止nginx，可能并不保存相关信息，quit是完整有序的停止nginx，并保存相关信息。
+
+    重载nginx命令：`nginx -s reload` 
+
+    当你改变了nginx配置信息并需要重新载入这些配置时可以使用此命令重载nginx
+</code></pre><h4 id="vue配置"><a href="#vue配置" class="headerlink" title="vue配置"></a>vue配置</h4><p>上面是生产环境的配置，使用 <code>vue-cli</code> 创建的项目，不需要在前端配置什么内容，<code>vue-cli</code> 弄好了。</p>
+<p>开发环境需要手动去配置一下，配置方式也很简单。</p>
+<p>打开 <code>config/index.js</code>文件，配置<code>proxyTable</code>：</p>
+<pre><code>proxyTable: {
+    &apos;/api&apos;:{
+        target:&apos;http://localhost:3000&apos;,
+        changeOrigin: true,
+        pathRewrite: {
+            &apos;^/api&apos;: &apos;/api&apos;
+        }
+    }
 }
-document.body.appendChild(frag);
-</code></pre><h3 id="4、-修改CSS类，而不是样式"><a href="#4、-修改CSS类，而不是样式" class="headerlink" title="4、 修改CSS类，而不是样式"></a>4、 修改CSS类，而不是样式</h3><hr>
-<p>切换className,而不是直接操作style，会减少对样式的修改，避免多次重绘，甚至重排。</p>
-<h3 id="5、不要在循环中创建函数"><a href="#5、不要在循环中创建函数" class="headerlink" title="5、不要在循环中创建函数"></a>5、不要在循环中创建函数</h3><hr>
-<p>比如：</p>
-<pre><code>for(var i = 0, m = data.length; i &lt; m; i++) {
-    handlerData(data[i], function(data){
-        //do something
-    });
-}
-</code></pre><p>可以修改为：</p>
-<pre><code>var handler = function(data){
-    //do something
-};
-for(var i = 0, m = data.length; i &lt; m; i++) {
-    handlerData(data[i], handler);
-}
-</code></pre><h3 id="6、回收不再需要的对象"><a href="#6、回收不再需要的对象" class="headerlink" title="6、回收不再需要的对象"></a>6、回收不再需要的对象</h3><h3 id="7、使用事情委托"><a href="#7、使用事情委托" class="headerlink" title="7、使用事情委托"></a>7、使用事情委托</h3><h3 id="8、不再使用的事件手动解绑，释放内存空间"><a href="#8、不再使用的事件手动解绑，释放内存空间" class="headerlink" title="8、不再使用的事件手动解绑，释放内存空间"></a>8、不再使用的事件手动解绑，释放内存空间</h3><blockquote>
-<p>参考资料</p>
-</blockquote>
-<p>1、前端性能优化（JavaScript篇）<a href="https://segmentfault.com/a/1190000000490324#articleHeader2" target="_blank" rel="external">https://segmentfault.com/a/1190000000490324#articleHeader2</a></p>
-<p>2、Web性能优化系列：10个JavaScript性能提升的技巧 <a href="http://web.jobbole.com/82469/" target="_blank" rel="external">http://web.jobbole.com/82469/</a></p>
+</code></pre><p>就大功告成了！</p>
 
       
     </div>
@@ -399,7 +431,9 @@ for(var i = 0, m = data.length; i &lt; m; i++) {
       
         <div class="post-tags">
           
-            <a href="/tags/js/" rel="tag"># js</a>
+            <a href="/tags/vue/" rel="tag"># vue</a>
+          
+            <a href="/tags/nginx/" rel="tag"># nginx</a>
           
         </div>
       
@@ -412,8 +446,8 @@ for(var i = 0, m = data.length; i &lt; m; i++) {
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/02/16/2017-02-16-vue-use-record/" rel="next" title="vue学习笔记">
-                <i class="fa fa-chevron-left"></i> vue学习笔记
+              <a href="/2017/08/27/2017-08-27-react-study/" rel="next" title="react学习笔记">
+                <i class="fa fa-chevron-left"></i> react学习笔记
               </a>
             
           </div>
@@ -421,10 +455,6 @@ for(var i = 0, m = data.length; i &lt; m; i++) {
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/03/01/2017-03-01-es6_sumtax_study/" rel="prev" title="es6学习">
-                es6学习 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -568,7 +598,7 @@ for(var i = 0, m = data.length; i &lt; m; i++) {
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、for循环"><span class="nav-number">1.</span> <span class="nav-text">1、for循环</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、缓存运算结果"><span class="nav-number">2.</span> <span class="nav-text">2、缓存运算结果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、减少对DOM的操作"><span class="nav-number">3.</span> <span class="nav-text">3、减少对DOM的操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、-修改CSS类，而不是样式"><span class="nav-number">4.</span> <span class="nav-text">4、 修改CSS类，而不是样式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5、不要在循环中创建函数"><span class="nav-number">5.</span> <span class="nav-text">5、不要在循环中创建函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6、回收不再需要的对象"><span class="nav-number">6.</span> <span class="nav-text">6、回收不再需要的对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7、使用事情委托"><span class="nav-number">7.</span> <span class="nav-text">7、使用事情委托</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8、不再使用的事件手动解绑，释放内存空间"><span class="nav-number">8.</span> <span class="nav-text">8、不再使用的事件手动解绑，释放内存空间</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#nginx配置"><span class="nav-number">1.</span> <span class="nav-text">nginx配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#nginx说明"><span class="nav-number">2.</span> <span class="nav-text">nginx说明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#vue配置"><span class="nav-number">3.</span> <span class="nav-text">vue配置</span></a></li></ol></div>
             
 
           </div>
