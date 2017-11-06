@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="花开半夏">
 <meta property="og:description" content="记录一些在网上找的和自己的一些实践，主要是javascript代码优化方面。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-21T15:06:54.966Z">
+<meta property="og:updated_time" content="2017-11-06T13:31:56.568Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="javascript 性能优化技巧">
 <meta name="twitter:description" content="记录一些在网上找的和自己的一些实践，主要是javascript代码优化方面。">
@@ -344,40 +344,19 @@
       
         <p>记录一些在网上找的和自己的一些实践，主要是javascript代码优化方面。 <a id="more"></a></p>
 <h3 id="1、for循环"><a href="#1、for循环" class="headerlink" title="1、for循环"></a>1、for循环</h3><hr>
-<p>缓存 data.length</p>
-<pre><code>for(var i = 0, m = data.length; i &lt; m; i++) {
-    //do someting
-}
-</code></pre><h3 id="2、缓存运算结果"><a href="#2、缓存运算结果" class="headerlink" title="2、缓存运算结果"></a>2、缓存运算结果</h3><hr>
+<p>缓存 data.length<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>, m = data.length; i &lt; m; i++) &#123;</div><div class="line">    <span class="comment">//do someting</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="2、缓存运算结果"><a href="#2、缓存运算结果" class="headerlink" title="2、缓存运算结果"></a>2、缓存运算结果</h3><hr>
 <p>常用的运算结果，用变量缓存起来</p>
 <h3 id="3、减少对DOM的操作"><a href="#3、减少对DOM的操作" class="headerlink" title="3、减少对DOM的操作"></a>3、减少对DOM的操作</h3><hr>
 <p>DOM操作是非常消耗资源的，以下这些会触发重排的属性或方法，尽量缓存：</p>
 <p><code>offsetTop、offsetLeft、 offsetWidth、offsetHeight、scrollTop、scrollLeft、scrollWidth、scrollHeight、 clientTop、clientLeft、clientWidth、clientHeight、getComputedStyle()</code></p>
-<p>使用DocumentFragment优化多次append</p>
-<pre><code>var frag = document.createDocumentFragment();
-for (var i = 0; i &lt; 1000; i++) {
-  var el = document.createElement(&apos;p&apos;);
-  el.innerHTML = i;
-  frag.appendChild(el);
-}
-document.body.appendChild(frag);
-</code></pre><h3 id="4、-修改CSS类，而不是样式"><a href="#4、-修改CSS类，而不是样式" class="headerlink" title="4、 修改CSS类，而不是样式"></a>4、 修改CSS类，而不是样式</h3><hr>
+<p>使用DocumentFragment优化多次append<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> frag = <span class="built_in">document</span>.createDocumentFragment();</div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">1000</span>; i++) &#123;</div><div class="line">  <span class="keyword">var</span> el = <span class="built_in">document</span>.createElement(<span class="string">'p'</span>);</div><div class="line">  el.innerHTML = i;</div><div class="line">  frag.appendChild(el);</div><div class="line">&#125;</div><div class="line"><span class="built_in">document</span>.body.appendChild(frag);</div></pre></td></tr></table></figure></p>
+<h3 id="4、-修改CSS类，而不是样式"><a href="#4、-修改CSS类，而不是样式" class="headerlink" title="4、 修改CSS类，而不是样式"></a>4、 修改CSS类，而不是样式</h3><hr>
 <p>切换className,而不是直接操作style，会减少对样式的修改，避免多次重绘，甚至重排。</p>
 <h3 id="5、不要在循环中创建函数"><a href="#5、不要在循环中创建函数" class="headerlink" title="5、不要在循环中创建函数"></a>5、不要在循环中创建函数</h3><hr>
-<p>比如：</p>
-<pre><code>for(var i = 0, m = data.length; i &lt; m; i++) {
-    handlerData(data[i], function(data){
-        //do something
-    });
-}
-</code></pre><p>可以修改为：</p>
-<pre><code>var handler = function(data){
-    //do something
-};
-for(var i = 0, m = data.length; i &lt; m; i++) {
-    handlerData(data[i], handler);
-}
-</code></pre><h3 id="6、回收不再需要的对象"><a href="#6、回收不再需要的对象" class="headerlink" title="6、回收不再需要的对象"></a>6、回收不再需要的对象</h3><h3 id="7、使用事情委托"><a href="#7、使用事情委托" class="headerlink" title="7、使用事情委托"></a>7、使用事情委托</h3><h3 id="8、不再使用的事件手动解绑，释放内存空间"><a href="#8、不再使用的事件手动解绑，释放内存空间" class="headerlink" title="8、不再使用的事件手动解绑，释放内存空间"></a>8、不再使用的事件手动解绑，释放内存空间</h3><blockquote>
+<p>比如：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>, m = data.length; i &lt; m; i++) &#123;</div><div class="line">    handlerData(data[i], <span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</div><div class="line">        <span class="comment">//do something</span></div><div class="line">    &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>可以修改为：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> handler = <span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</div><div class="line">    <span class="comment">//do something</span></div><div class="line">&#125;;</div><div class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>, m = data.length; i &lt; m; i++) &#123;</div><div class="line">    handlerData(data[i], handler);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="6、回收不再需要的对象"><a href="#6、回收不再需要的对象" class="headerlink" title="6、回收不再需要的对象"></a>6、回收不再需要的对象</h3><h3 id="7、使用事情委托"><a href="#7、使用事情委托" class="headerlink" title="7、使用事情委托"></a>7、使用事情委托</h3><h3 id="8、不再使用的事件手动解绑，释放内存空间"><a href="#8、不再使用的事件手动解绑，释放内存空间" class="headerlink" title="8、不再使用的事件手动解绑，释放内存空间"></a>8、不再使用的事件手动解绑，释放内存空间</h3><blockquote>
 <p>参考资料</p>
 </blockquote>
 <p>1、前端性能优化（JavaScript篇）<a href="https://segmentfault.com/a/1190000000490324#articleHeader2" target="_blank" rel="external">https://segmentfault.com/a/1190000000490324#articleHeader2</a></p>

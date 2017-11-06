@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="记录下图片上传的相关操作，File 文件转base64,base64格式转二进制流  获取图片路径  var file = e.target.files[0];  function getFullPath(file) {     window.URL = window.URL || window.webkitURL;     if (window.URL &amp;amp;&amp;amp; window.URL">
+<meta name="description" content="记录下图片上传的相关操作，File 文件转base64,base64格式转二进制流  获取图片路径12345678910var file = e.target.files[0];function getFullPath(file) &amp;#123;    window.URL = window.URL || window.webkitURL;    if (window.URL &amp;amp;&amp;amp;">
 <meta name="keywords" content="js">
 <meta property="og:type" content="article">
 <meta property="og:title" content="图片上传相关操作">
 <meta property="og:url" content="http://yoursite.com/2017/05/18/2017-05-18-upload-img-base64/index.html">
 <meta property="og:site_name" content="花开半夏">
-<meta property="og:description" content="记录下图片上传的相关操作，File 文件转base64,base64格式转二进制流  获取图片路径  var file = e.target.files[0];  function getFullPath(file) {     window.URL = window.URL || window.webkitURL;     if (window.URL &amp;amp;&amp;amp; window.URL">
+<meta property="og:description" content="记录下图片上传的相关操作，File 文件转base64,base64格式转二进制流  获取图片路径12345678910var file = e.target.files[0];function getFullPath(file) &amp;#123;    window.URL = window.URL || window.webkitURL;    if (window.URL &amp;amp;&amp;amp;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-21T15:17:38.936Z">
+<meta property="og:updated_time" content="2017-11-06T13:28:17.767Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="图片上传相关操作">
-<meta name="twitter:description" content="记录下图片上传的相关操作，File 文件转base64,base64格式转二进制流  获取图片路径  var file = e.target.files[0];  function getFullPath(file) {     window.URL = window.URL || window.webkitURL;     if (window.URL &amp;amp;&amp;amp; window.URL">
+<meta name="twitter:description" content="记录下图片上传的相关操作，File 文件转base64,base64格式转二进制流  获取图片路径12345678910var file = e.target.files[0];function getFullPath(file) &amp;#123;    window.URL = window.URL || window.webkitURL;    if (window.URL &amp;amp;&amp;amp;">
 
 
 
@@ -344,80 +344,15 @@
       
         <p>记录下图片上传的相关操作，File 文件转base64,base64格式转二进制流</p>
 <blockquote>
-<p>获取图片路径</p>
+<p>获取图片路径<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> file = e.target.files[<span class="number">0</span>];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getFullPath</span>(<span class="params">file</span>) </span>&#123;</div><div class="line">    <span class="built_in">window</span>.URL = <span class="built_in">window</span>.URL || <span class="built_in">window</span>.webkitURL;</div><div class="line">    <span class="keyword">if</span> (<span class="built_in">window</span>.URL &amp;&amp; <span class="built_in">window</span>.URL.createObjectURL) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="built_in">window</span>.URL.createObjectURL(file);</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>用canvas方法获取图片的base64<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment">    传入File格式,返回base64格式数据</span></div><div class="line"><span class="comment">*/</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getThumbnail</span>: <span class="title">function</span>(<span class="params">file, area, callback</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> canvas = <span class="built_in">document</span>.createElement(<span class="string">"canvas"</span>),</div><div class="line">        context = canvas.getContext(<span class="string">'2d'</span>);</div><div class="line">    <span class="keyword">var</span> img = <span class="keyword">new</span> Image();</div><div class="line">    img.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> target_w;</div><div class="line">        <span class="keyword">var</span> target_h;</div><div class="line">        <span class="keyword">var</span> imgarea = img.width * img.height;</div><div class="line">        <span class="keyword">if</span> (imgarea &gt; area) &#123;</div><div class="line">            <span class="keyword">var</span> scale = <span class="built_in">Math</span>.sqrt(imgarea / area);</div><div class="line">            scale = <span class="built_in">Math</span>.ceil(scale * <span class="number">100</span>) / <span class="number">100</span>;</div><div class="line">            target_w = img.width / scale;</div><div class="line">            target_h = img.height / scale;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            target_w = img.width;</div><div class="line">            target_h = img.height;</div><div class="line">        &#125;</div><div class="line">        canvas.width = target_w;</div><div class="line">        canvas.height = target_h;</div><div class="line">        context.drawImage(img, <span class="number">0</span>, <span class="number">0</span>, target_w, target_h);</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            <span class="keyword">var</span> base64Data = canvas.toDataURL(<span class="string">"image/jpeg"</span>, <span class="number">0.5</span>);</div><div class="line">            callback(file, base64Data);</div><div class="line">        &#125; <span class="keyword">catch</span> (e) &#123;</div><div class="line">            callback(file, <span class="literal">null</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line">    img.src = <span class="keyword">this</span>.getFullPath(file);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 </blockquote>
-<pre><code>var file = e.target.files[0];
-
-function getFullPath(file) {
-    window.URL = window.URL || window.webkitURL;
-    if (window.URL &amp;&amp; window.URL.createObjectURL) {
-        return window.URL.createObjectURL(file);
-    } else {
-        return null;
-    }
-}
-</code></pre><blockquote>
-<p>用canvas方法获取图片的base64</p>
-</blockquote>
-<pre><code>/*
-    传入File格式,返回base64格式数据
-*/
-function getThumbnail: function(file, area, callback) {
-    var canvas = document.createElement(&quot;canvas&quot;),
-        context = canvas.getContext(&apos;2d&apos;);
-    var img = new Image();
-    img.onload = function() {
-        var target_w;
-        var target_h;
-        var imgarea = img.width * img.height;
-        if (imgarea &gt; area) {
-            var scale = Math.sqrt(imgarea / area);
-            scale = Math.ceil(scale * 100) / 100;
-            target_w = img.width / scale;
-            target_h = img.height / scale;
-        } else {
-            target_w = img.width;
-            target_h = img.height;
-        }
-        canvas.width = target_w;
-        canvas.height = target_h;
-        context.drawImage(img, 0, 0, target_w, target_h);
-        try {
-            var base64Data = canvas.toDataURL(&quot;image/jpeg&quot;, 0.5);
-            callback(file, base64Data);
-        } catch (e) {
-            callback(file, null);
-        }
-    };
-    img.src = this.getFullPath(file);
-}
-</code></pre> <a id="more"></a>
+ <a id="more"></a>
 <blockquote>
-<p>base64转二进制流</p>
+<p>base64转二进制流<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment">    传入base64格式数据</span></div><div class="line"><span class="comment">*/</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">dataURItoBlob</span>(<span class="params">base64Data</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> byteString;</div><div class="line">    <span class="keyword">if</span> (base64Data.split(<span class="string">','</span>)[<span class="number">0</span>].indexOf(<span class="string">'base64'</span>) &gt;= <span class="number">0</span>) byteString = atob(base64Data.split(<span class="string">','</span>)[<span class="number">1</span>]);</div><div class="line">    <span class="keyword">else</span> byteString = <span class="built_in">unescape</span>(base64Data.split(<span class="string">','</span>)[<span class="number">1</span>]);</div><div class="line">    <span class="keyword">var</span> mimeString = base64Data.split(<span class="string">','</span>)[<span class="number">0</span>].split(<span class="string">':'</span>)[<span class="number">1</span>].split(<span class="string">';'</span>)[<span class="number">0</span>];</div><div class="line">    <span class="keyword">var</span> ia = <span class="keyword">new</span> <span class="built_in">Uint8Array</span>(byteString.length);</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; byteString.length; i++) &#123;</div><div class="line">        ia[i] = byteString.charCodeAt(i);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> Blob([ia], &#123;</div><div class="line">        type: mimeString</div><div class="line">    &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 </blockquote>
-<pre><code>/*
-    传入base64格式数据
-*/
-function dataURItoBlob(base64Data) {
-    var byteString;
-    if (base64Data.split(&apos;,&apos;)[0].indexOf(&apos;base64&apos;) &gt;= 0) byteString = atob(base64Data.split(&apos;,&apos;)[1]);
-    else byteString = unescape(base64Data.split(&apos;,&apos;)[1]);
-    var mimeString = base64Data.split(&apos;,&apos;)[0].split(&apos;:&apos;)[1].split(&apos;;&apos;)[0];
-    var ia = new Uint8Array(byteString.length);
-    for (var i = 0; i &lt; byteString.length; i++) {
-        ia[i] = byteString.charCodeAt(i);
-    }
-    return new Blob([ia], {
-        type: mimeString
-    });
-}
-</code></pre><p>最后将二进制流通过ajax传个后端。跟使用File格式传数据相似，先转成formDate格式，这里我使用了一个空的form标签，来代替<code>&lt;input type=&quot;file&quot; &gt;</code> 标签。</p>
-<pre><code>&lt;form id=&quot;upForm&quot;&gt;&lt;/form&gt;
+<p>最后将二进制流通过ajax传个后端。跟使用File格式传数据相似，先转成formDate格式，这里我使用了一个空的form标签，来代替<code>&lt;input type=&quot;file&quot; &gt;</code> 标签。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;form id=<span class="string">"upForm"</span>&gt;&lt;/form&gt;</div><div class="line"></div><div class="line"><span class="keyword">var</span> blob = that.dataURItoBlob(base64Url),</div><div class="line">    fd = <span class="keyword">new</span> FormData($(<span class="string">'#upForm'</span>)[<span class="number">0</span>]);</div><div class="line">fd.append(<span class="string">"imageFile"</span>, blob, <span class="string">'image.png'</span>);</div></pre></td></tr></table></figure></p>
 
-var blob = that.dataURItoBlob(base64Url),
-    fd = new FormData($(&apos;#upForm&apos;)[0]);
-fd.append(&quot;imageFile&quot;, blob, &apos;image.png&apos;);
-</code></pre>
       
     </div>
     

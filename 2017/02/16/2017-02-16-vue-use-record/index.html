@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="花开半夏">
 <meta property="og:description" content="记录一些容易忘记的vue相关知识点，提高工作效率。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-21T15:07:00.638Z">
+<meta property="og:updated_time" content="2017-11-06T13:32:33.901Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue学习笔记">
 <meta name="twitter:description" content="记录一些容易忘记的vue相关知识点，提高工作效率。">
@@ -345,12 +345,8 @@
         <p>记录一些容易忘记的vue相关知识点，提高工作效率。 <a id="more"></a></p>
 <h3 id="1、使页面支持-sass语法"><a href="#1、使页面支持-sass语法" class="headerlink" title="1、使页面支持 sass语法"></a>1、使页面支持 sass语法</h3><p>安装sass依赖sass-loader 和node-sass</p>
 <pre><code>npm install sass-loader node-sass --save-dev
-</code></pre><p>然后在webpack.base.conf.js中添加相关配置:</p>
-<pre><code>{
-    test: /\.s[a|c]ss$/,
-    loader: &apos;style!css!sass&apos;
-}
-</code></pre><p>就可以在.vue的文件中使用了：</p>
+</code></pre><p>然后在webpack.base.conf.js中添加相关配置:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">	test: <span class="regexp">/\.s[a|c]ss$/</span>,</div><div class="line">	loader: <span class="string">'style!css!sass'</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>就可以在.vue的文件中使用了：</p>
 <pre><code>&lt;style scoped lang=&quot;sass&quot;&gt;
 &lt;/style&gt;
 
@@ -358,26 +354,8 @@ vue2.0 直接写 lang=&quot;scss&quot; 老报错，可以使用
 
 &lt;style rel=&quot;stylesheet/scss&quot; lang=&quot;sass&quot;&gt;&lt;/style&gt;
 </code></pre><h3 id="2、vue2-较-vue1-的几点变化"><a href="#2、vue2-较-vue1-的几点变化" class="headerlink" title="2、vue2 较 vue1 的几点变化"></a>2、vue2 较 vue1 的几点变化</h3><blockquote>
-<p>1、丢弃$index和$key</p>
-</blockquote>
-<pre><code>&lt;tr v-for=&quot;list in lists&quot;&gt;
-{{list}}
-&lt;/tr&gt;
-或者
-&lt;tr v-for=&quot;（list,index）in lists&quot;&gt;
-{{index}}
-&lt;/tr&gt;
-</code></pre><blockquote>
-<p>2、使用<router-link>组件替换v-link</router-link></p>
-</blockquote>
-<pre><code>&lt;a v-link=&quot;&apos;/about&apos;&quot;&gt;About&lt;/a&gt;
-替换成
-&lt;router-link to=&quot;/about&quot;&gt;About&lt;/router-link&gt;
-
-this.$route.router.go({ name: &apos;user&apos;, params: { userId: 123 }});
-替换成
-this.$router.push({ name: &apos;user&apos;, params: { userId: 123 }});
-</code></pre><blockquote>
+<p>1、丢弃$index和$key<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;tr v-<span class="keyword">for</span>=<span class="string">"list in lists"</span>&gt;</div><div class="line">&#123;&#123;list&#125;&#125;</div><div class="line">&lt;<span class="regexp">/tr&gt;</span></div><div class="line"><span class="regexp">/</span><span class="regexp">/ 或者</span></div><div class="line"><span class="regexp">&lt;tr v-for="（list,index）in lists"&gt;</span></div><div class="line"><span class="regexp">&#123;&#123;index&#125;&#125;</span></div><div class="line"><span class="regexp">&lt;/</span>tr&gt;</div></pre></td></tr></table></figure></p>
+<p>2、使用<router-link>组件替换v-link<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;a v-link=<span class="string">"'/about'"</span>&gt;About&lt;<span class="regexp">/a&gt;</span></div><div class="line"><span class="regexp">/</span><span class="regexp">/ 替换成</span></div><div class="line"><span class="regexp">&lt;router-link to="/</span>about<span class="string">"&gt;About&lt;/router-link&gt;</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">this.$route.router.go(&#123; name: 'user', params: &#123; userId: 123 &#125;&#125;);</span></div><div class="line"><span class="string">// 替换成</span></div><div class="line"><span class="string">this.$router.push(&#123; name: 'user', params: &#123; userId: 123 &#125;&#125;);</span></div></pre></td></tr></table></figure></router-link></p>
 <p>3、this.$root 用 this.$parent 来代替</p>
 <p>4、transition 改成内置组件<code>&lt;transition&gt;</code>，还有个 <code>&lt;transition-group&gt;</code></p>
 <p>5、路由挂钩</p>
@@ -389,13 +367,8 @@ canDeactivate 由 beforeRouteLeave 替换
 </code></pre><h3 id="3、报错记录"><a href="#3、报错记录" class="headerlink" title="3、报错记录"></a>3、报错记录</h3><blockquote>
 <p>1、vue 2.0 Failed to mount component: template or render function not defined</p>
 </blockquote>
-<p>解决办法是在webpack.config.js中设置：</p>
-<pre><code>resolve: {
-    alias: {
-        vue: &apos;vue/dist/vue.js&apos;,
-    }
-}
-</code></pre>
+<p>解决办法是在webpack.config.js中设置：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">resolve: &#123;</div><div class="line">       alias: &#123;</div><div class="line">           vue: <span class="string">'vue/dist/vue.js'</span>,</div><div class="line">       &#125;</div><div class="line">   &#125;</div></pre></td></tr></table></figure></p>
+
       
     </div>
     

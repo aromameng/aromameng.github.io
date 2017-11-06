@@ -827,29 +827,8 @@
       
         
           <p>js学习笔记，原型对象、原型链、继承。js常用的几种继承方式 </p>
-<h4 id="原型链继承"><a href="#原型链继承" class="headerlink" title="原型链继承"></a>原型链继承</h4><pre><code>function Parent () {
-    this.name = &apos;张三&apos;;
-    this.friends=[ &apos;李四&apos;, &apos;王五&apos;];
-}
-
-Parent.prototype.getName = function () {
-    console.log(this.name);
-}
-
-function Child () {
-
-}
-
-Child.prototype = new Parent();
-
-var child1 = new Child();
-child1.friends.push(&apos;赵六&apos;);
-console.log(child1.getName()) // 张三
-console.log(child1.friends) // [ &apos;李四&apos;, &apos;王五&apos;,&apos;赵六&apos;]
-
-var child2 = new Child();
-console.log(child2.friends); // [ &apos;李四&apos;, &apos;王五&apos;,&apos;赵六&apos;]
-</code></pre><p>缺点：</p>
+<h4 id="原型链继承"><a href="#原型链继承" class="headerlink" title="原型链继承"></a>原型链继承</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Parent</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.name = <span class="string">'张三'</span>;</div><div class="line">    <span class="keyword">this</span>.friends=[ <span class="string">'李四'</span>, <span class="string">'王五'</span>];</div><div class="line">&#125;</div><div class="line"></div><div class="line">Parent.prototype.getName = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Child</span> (<span class="params"></span>) </span>&#123;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">Child.prototype = <span class="keyword">new</span> Parent();</div><div class="line"></div><div class="line"><span class="keyword">var</span> child1 = <span class="keyword">new</span> Child();</div><div class="line">child1.friends.push(<span class="string">'赵六'</span>);</div><div class="line"><span class="built_in">console</span>.log(child1.getName()) <span class="comment">// 张三</span></div><div class="line"><span class="built_in">console</span>.log(child1.friends) <span class="comment">// [ '李四', '王五','赵六']</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> child2 = <span class="keyword">new</span> Child();</div><div class="line"><span class="built_in">console</span>.log(child2.friends); <span class="comment">// [ '李四', '王五','赵六']</span></div></pre></td></tr></table></figure>
+<p>缺点：</p>
 <ul>
 <li><p>1.引用类型的属性被所有实例共享</p>
 </li>
@@ -1543,33 +1522,8 @@ var minInNumbers = Math.min.apply(Math, numbers);
 <blockquote>
 <p>解决方法：</p>
 </blockquote>
-<p>局部滚动：使用scrollFix</p>
-<pre><code>function scrollFix(elem){
-    // Variables to track inputs
-    var startY, startTopScroll;
-
-    elem = elem || document.querySelector(elem);
-
-    // If there is no element, then do nothing  
-    if(!elem)
-        return;
-
-    // Handle the start of interactions
-    elem.addEventListener(&apos;touchmove&apos;, function(event){
-        startY = event.touches[0].pageY;
-        startTopScroll = elem.scrollTop;
-
-        if(startTopScroll &lt;= 0){
-            document.body.scrollTop=0;  /* 最新ios版本，同时控制body才行 */
-            elem.scrollTop = 1;
-        }
-
-        if(startTopScroll + elem.offsetHeight &gt;= elem.scrollHeight)
-            elem.scrollTop = elem.scrollHeight - elem.offsetHeight - 1;
-            document.body.scrollTop=0;  
-    }, false);
-}
-</code></pre><p>全局滚动暂时没看到比较好的方案。</p>
+<p>局部滚动：使用scrollFix<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">scrollFix</span>(<span class="params">elem</span>)</span>&#123;</div><div class="line">    <span class="comment">// Variables to track inputs</span></div><div class="line">    <span class="keyword">var</span> startY, startTopScroll;</div><div class="line">    </div><div class="line">    elem = elem || <span class="built_in">document</span>.querySelector(elem);</div><div class="line">    </div><div class="line">    <span class="comment">// If there is no element, then do nothing  </span></div><div class="line">    <span class="keyword">if</span>(!elem)</div><div class="line">        <span class="keyword">return</span>;</div><div class="line"></div><div class="line">    <span class="comment">// Handle the start of interactions</span></div><div class="line">    elem.addEventListener(<span class="string">'touchmove'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">        startY = event.touches[<span class="number">0</span>].pageY;</div><div class="line">        startTopScroll = elem.scrollTop;</div><div class="line">        </div><div class="line">        <span class="keyword">if</span>(startTopScroll &lt;= <span class="number">0</span>)&#123;</div><div class="line">            <span class="built_in">document</span>.body.scrollTop=<span class="number">0</span>;  <span class="comment">/* 最新ios版本，同时控制body才行 */</span></div><div class="line">            elem.scrollTop = <span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">if</span>(startTopScroll + elem.offsetHeight &gt;= elem.scrollHeight)</div><div class="line">            elem.scrollTop = elem.scrollHeight - elem.offsetHeight - <span class="number">1</span>;</div><div class="line">            <span class="built_in">document</span>.body.scrollTop=<span class="number">0</span>;  </div><div class="line">    &#125;, <span class="literal">false</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>全局滚动暂时没看到比较好的方案。</p>
 <p>使用iscroll 插件算是一种解决方案，可以有效的防止弹性滚动的问题，浏览器自带的滚动条会被禁止.</p>
 <h4 id="2、移动端scroll事件，不能实时触发"><a href="#2、移动端scroll事件，不能实时触发" class="headerlink" title="2、移动端scroll事件，不能实时触发"></a>2、移动端scroll事件，不能实时触发</h4><blockquote>
 <p>原因分析 </p>
@@ -1728,54 +1682,9 @@ var minInNumbers = Math.min.apply(Math, numbers);
         
           <p>记录下图片上传的相关操作，File 文件转base64,base64格式转二进制流</p>
 <blockquote>
-<p>获取图片路径</p>
+<p>获取图片路径<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> file = e.target.files[<span class="number">0</span>];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getFullPath</span>(<span class="params">file</span>) </span>&#123;</div><div class="line">    <span class="built_in">window</span>.URL = <span class="built_in">window</span>.URL || <span class="built_in">window</span>.webkitURL;</div><div class="line">    <span class="keyword">if</span> (<span class="built_in">window</span>.URL &amp;&amp; <span class="built_in">window</span>.URL.createObjectURL) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="built_in">window</span>.URL.createObjectURL(file);</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>用canvas方法获取图片的base64<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment">    传入File格式,返回base64格式数据</span></div><div class="line"><span class="comment">*/</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getThumbnail</span>: <span class="title">function</span>(<span class="params">file, area, callback</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> canvas = <span class="built_in">document</span>.createElement(<span class="string">"canvas"</span>),</div><div class="line">        context = canvas.getContext(<span class="string">'2d'</span>);</div><div class="line">    <span class="keyword">var</span> img = <span class="keyword">new</span> Image();</div><div class="line">    img.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> target_w;</div><div class="line">        <span class="keyword">var</span> target_h;</div><div class="line">        <span class="keyword">var</span> imgarea = img.width * img.height;</div><div class="line">        <span class="keyword">if</span> (imgarea &gt; area) &#123;</div><div class="line">            <span class="keyword">var</span> scale = <span class="built_in">Math</span>.sqrt(imgarea / area);</div><div class="line">            scale = <span class="built_in">Math</span>.ceil(scale * <span class="number">100</span>) / <span class="number">100</span>;</div><div class="line">            target_w = img.width / scale;</div><div class="line">            target_h = img.height / scale;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            target_w = img.width;</div><div class="line">            target_h = img.height;</div><div class="line">        &#125;</div><div class="line">        canvas.width = target_w;</div><div class="line">        canvas.height = target_h;</div><div class="line">        context.drawImage(img, <span class="number">0</span>, <span class="number">0</span>, target_w, target_h);</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            <span class="keyword">var</span> base64Data = canvas.toDataURL(<span class="string">"image/jpeg"</span>, <span class="number">0.5</span>);</div><div class="line">            callback(file, base64Data);</div><div class="line">        &#125; <span class="keyword">catch</span> (e) &#123;</div><div class="line">            callback(file, <span class="literal">null</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line">    img.src = <span class="keyword">this</span>.getFullPath(file);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 </blockquote>
-<pre><code>var file = e.target.files[0];
-
-function getFullPath(file) {
-    window.URL = window.URL || window.webkitURL;
-    if (window.URL &amp;&amp; window.URL.createObjectURL) {
-        return window.URL.createObjectURL(file);
-    } else {
-        return null;
-    }
-}
-</code></pre><blockquote>
-<p>用canvas方法获取图片的base64</p>
-</blockquote>
-<pre><code>/*
-    传入File格式,返回base64格式数据
-*/
-function getThumbnail: function(file, area, callback) {
-    var canvas = document.createElement(&quot;canvas&quot;),
-        context = canvas.getContext(&apos;2d&apos;);
-    var img = new Image();
-    img.onload = function() {
-        var target_w;
-        var target_h;
-        var imgarea = img.width * img.height;
-        if (imgarea &gt; area) {
-            var scale = Math.sqrt(imgarea / area);
-            scale = Math.ceil(scale * 100) / 100;
-            target_w = img.width / scale;
-            target_h = img.height / scale;
-        } else {
-            target_w = img.width;
-            target_h = img.height;
-        }
-        canvas.width = target_w;
-        canvas.height = target_h;
-        context.drawImage(img, 0, 0, target_w, target_h);
-        try {
-            var base64Data = canvas.toDataURL(&quot;image/jpeg&quot;, 0.5);
-            callback(file, base64Data);
-        } catch (e) {
-            callback(file, null);
-        }
-    };
-    img.src = this.getFullPath(file);
-}
-</code></pre>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/05/18/2017-05-18-upload-img-base64/#more" rel="contents">

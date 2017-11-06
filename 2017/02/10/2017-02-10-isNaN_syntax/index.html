@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="花开半夏">
 <meta property="og:description" content="isNaN() 函数用于检查其参数是否是非数字值。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-21T15:07:18.815Z">
+<meta property="og:updated_time" content="2017-11-06T13:33:58.322Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="isNaN的使用">
 <meta name="twitter:description" content="isNaN() 函数用于检查其参数是否是非数字值。">
@@ -349,20 +349,9 @@
 <h3 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h3><blockquote>
 <p>如果 x 是特殊的非数字值 NaN（<strong>或者能被转换为这样的值</strong>），返回的值就是 true。如果 x 是其他值,则返回 false</p>
 </blockquote>
-<p>###实例</p>
-<pre><code>document.write(isNaN(123));  //false
-document.write(isNaN(&apos;123&apos;));  //false
-document.write(isNaN(-1.23)); //false
-document.write(isNaN(5-2)); //false
-document.write(isNaN(0)); //false
-document.write(isNaN(&quot;Hello&quot;)); //true
-document.write(isNaN(&quot;2005/12/12&quot;));    //true        
-</code></pre><p>常用于数字转换，如：</p>
-<pre><code>function toNumber (val) {
-    var n = parseFloat(val);
-    return isNaN(n) ? val : n
-}
-</code></pre><h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><blockquote>
+<p>###实例<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">document</span>.write(<span class="built_in">isNaN</span>(<span class="number">123</span>));  <span class="comment">//false</span></div><div class="line"><span class="built_in">document</span>.write(<span class="built_in">isNaN</span>(<span class="string">'123'</span>));  <span class="comment">//false</span></div><div class="line"><span class="built_in">document</span>.write(<span class="built_in">isNaN</span>(<span class="number">-1.23</span>)); <span class="comment">//false</span></div><div class="line"><span class="built_in">document</span>.write(<span class="built_in">isNaN</span>(<span class="number">5</span><span class="number">-2</span>)); <span class="comment">//false</span></div><div class="line"><span class="built_in">document</span>.write(<span class="built_in">isNaN</span>(<span class="number">0</span>)); <span class="comment">//false</span></div><div class="line"><span class="built_in">document</span>.write(<span class="built_in">isNaN</span>(<span class="string">"Hello"</span>)); <span class="comment">//true</span></div><div class="line"><span class="built_in">document</span>.write(<span class="built_in">isNaN</span>(<span class="string">"2005/12/12"</span>));	<span class="comment">//true</span></div></pre></td></tr></table></figure></p>
+<p>常用于数字转换，如：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">toNumber</span> (<span class="params">val</span>) </span>&#123;</div><div class="line">	<span class="keyword">var</span> n = <span class="built_in">parseFloat</span>(val);</div><div class="line">	<span class="keyword">return</span> <span class="built_in">isNaN</span>(n) ? val : n</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><blockquote>
 <p>如果把 NaN 与任何值（包括其自身）相比得到的结果均是 false，所以要判断某个值是否是 NaN，不能使用 == 或 === 运算符</p>
 </blockquote>
 <h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><blockquote>

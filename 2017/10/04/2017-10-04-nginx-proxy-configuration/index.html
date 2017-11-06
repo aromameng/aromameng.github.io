@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="花开半夏">
 <meta property="og:description" content="想了解下nginx是怎么做反向代理的，所以就下载了一个在本地搭建环境试试看，我的目标是能运行就行。 本地后端服务器地址是http://localhost:3000，采用nodeJs的框架express搭建 前端打包后的静态文件放在G:\vue-express\dist  nginx下载地址：http://nginx.org/en/download.html  nginx版本： nginx/Wind">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-26T13:58:40.305Z">
+<meta property="og:updated_time" content="2017-11-06T13:21:31.459Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nginx代理配置">
 <meta name="twitter:description" content="想了解下nginx是怎么做反向代理的，所以就下载了一个在本地搭建环境试试看，我的目标是能运行就行。 本地后端服务器地址是http://localhost:3000，采用nodeJs的框架express搭建 前端打包后的静态文件放在G:\vue-express\dist  nginx下载地址：http://nginx.org/en/download.html  nginx版本： nginx/Wind">
@@ -352,24 +352,8 @@
 </li>
 </ul>
 <a id="more"></a>
-<h4 id="nginx配置"><a href="#nginx配置" class="headerlink" title="nginx配置"></a>nginx配置</h4><p>配置文件地址：<code>G:\mySoft\nginx-1.12.2\nginx-1.12.2\conf\nginx.conf</code> （即nginx下载包下的<code>conf/nginx.conf</code>文件）</p>
-<pre><code>server {
-        listen       8088;
-        server_name  localhost;
-
-        #charset koi8-r;
-
-        #access_log  logs/host.access.log  main;
-
-        location / {
-            root   G:/vue-express/dist;
-            index  index.html index.htm; 
-        }
-        location /api {
-            proxy_pass http://127.0.0.1:3000/api;
-        }
-}
-</code></pre><p><code>nginx.exe</code> 文件所在文件夹，使用CMD命令，运行<code>start nginx</code>即可开启 nginx 服务。</p>
+<h4 id="nginx配置"><a href="#nginx配置" class="headerlink" title="nginx配置"></a>nginx配置</h4><p>配置文件地址：<code>G:\mySoft\nginx-1.12.2\nginx-1.12.2\conf\nginx.conf</code> （即nginx下载包下的<code>conf/nginx.conf</code>文件）<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">server &#123;</div><div class="line">        listen       <span class="number">8088</span>;</div><div class="line">        server_name  localhost;</div><div class="line"></div><div class="line">        #charset koi8-r;</div><div class="line"></div><div class="line">        #access_log  logs/host.access.log  main;</div><div class="line"></div><div class="line">        location / &#123;</div><div class="line">            root   G:<span class="regexp">/vue-express/</span>dist;</div><div class="line">            index  index.html index.htm; </div><div class="line">        &#125;</div><div class="line">        location /api &#123;</div><div class="line">            proxy_pass http:<span class="comment">//127.0.0.1:3000/api;</span></div><div class="line">        &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><code>nginx.exe</code> 文件所在文件夹，使用CMD命令，运行<code>start nginx</code>即可开启 nginx 服务。</p>
 <p>浏览器打开<code>http://127.0.0.1:8088/#/</code> 就可以访问到放置在 <code>G:/vue-express/dist</code> 目录下的静态文件，api请求也能正确请求到 <code>http://127.0.0.1:3000</code> 上的资源。</p>
 <h4 id="nginx说明"><a href="#nginx说明" class="headerlink" title="nginx说明"></a>nginx说明</h4><p>网上找的一些资料，待完善</p>
 <pre><code>------nginx.conf文件中的一些配置含义------
@@ -403,17 +387,8 @@
     当你改变了nginx配置信息并需要重新载入这些配置时可以使用此命令重载nginx
 </code></pre><h4 id="vue配置"><a href="#vue配置" class="headerlink" title="vue配置"></a>vue配置</h4><p>上面是生产环境的配置，使用 <code>vue-cli</code> 创建的项目，不需要在前端配置什么内容，<code>vue-cli</code> 弄好了。</p>
 <p>开发环境需要手动去配置一下，配置方式也很简单。</p>
-<p>打开 <code>config/index.js</code>文件，配置<code>proxyTable</code>：</p>
-<pre><code>proxyTable: {
-    &apos;/api&apos;:{
-        target:&apos;http://localhost:3000&apos;,
-        changeOrigin: true,
-        pathRewrite: {
-            &apos;^/api&apos;: &apos;/api&apos;
-        }
-    }
-}
-</code></pre><p>就大功告成了！</p>
+<p>打开 <code>config/index.js</code>文件，配置<code>proxyTable</code>：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">proxyTable: &#123;</div><div class="line">    <span class="string">'/api'</span>:&#123;</div><div class="line">        target:<span class="string">'http://localhost:3000'</span>,</div><div class="line">        changeOrigin: <span class="literal">true</span>,</div><div class="line">        pathRewrite: &#123;</div><div class="line">            <span class="string">'^/api'</span>: <span class="string">'/api'</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>就大功告成了！</p>
 
       
     </div>

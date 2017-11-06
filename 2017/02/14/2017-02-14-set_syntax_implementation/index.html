@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="花开半夏">
 <meta property="og:description" content="使用原生js，实现类Set结构的类">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-21T15:07:07.556Z">
+<meta property="og:updated_time" content="2017-11-06T13:33:29.231Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="原生js实现类Set结构">
 <meta name="twitter:description" content="使用原生js，实现类Set结构的类">
@@ -354,31 +354,11 @@
 <h4 id="has-value-方法"><a href="#has-value-方法" class="headerlink" title="has(value)方法"></a>has(value)方法</h4><pre><code>this.has = function(value){
     return items.hasOwnProperty(value);
 };
-</code></pre><h4 id="add方法"><a href="#add方法" class="headerlink" title="add方法"></a>add方法</h4><pre><code>this.add = function(value){
-    if (!this.has(value)){
-        items[value] = value;
-        return true;
-    }
-    return false;
-};
-</code></pre><h4 id="remove和clear方法"><a href="#remove和clear方法" class="headerlink" title="remove和clear方法"></a>remove和clear方法</h4><pre><code>this.remove = function(value){
-    if (this.has(value)){
-        delete items[value];
-        return true;
-    }
-    return false;
-};
-
-this.clear = function(){
-    items = {};
-};
-</code></pre><h4 id="size方法"><a href="#size方法" class="headerlink" title="size方法"></a>size方法</h4><pre><code>this.size = function(){
-return Object.keys(items).length;
-};
-</code></pre><h4 id="values方法"><a href="#values方法" class="headerlink" title="values方法"></a>values方法</h4><pre><code>this.values = function(){
-return Object.keys(items);
-};
-</code></pre><blockquote>
+</code></pre><h4 id="add方法"><a href="#add方法" class="headerlink" title="add方法"></a>add方法</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">this</span>.add = <span class="function"><span class="keyword">function</span>(<span class="params">value</span>)</span>&#123;</div><div class="line">	<span class="keyword">if</span> (!<span class="keyword">this</span>.has(value))&#123;</div><div class="line">		items[value] = value;</div><div class="line">		<span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h4 id="remove和clear方法"><a href="#remove和clear方法" class="headerlink" title="remove和clear方法"></a>remove和clear方法</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">this</span>.remove = <span class="function"><span class="keyword">function</span>(<span class="params">value</span>)</span>&#123;</div><div class="line">	<span class="keyword">if</span> (<span class="keyword">this</span>.has(value))&#123;</div><div class="line">		<span class="keyword">delete</span> items[value];</div><div class="line">		<span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">this</span>.clear = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	items = &#123;&#125;;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h4 id="size方法"><a href="#size方法" class="headerlink" title="size方法"></a>size方法</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">this</span>.size = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line"><span class="keyword">return</span> <span class="built_in">Object</span>.keys(items).length;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h4 id="values方法"><a href="#values方法" class="headerlink" title="values方法"></a>values方法</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">this</span>.values = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line"><span class="keyword">return</span> <span class="built_in">Object</span>.keys(items);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<blockquote>
 <p>参考资料 《学习JavaScript数据结构与算法》</p>
 </blockquote>
 

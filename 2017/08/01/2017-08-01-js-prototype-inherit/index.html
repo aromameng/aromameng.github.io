@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="js学习笔记，原型对象、原型链、继承。js常用的几种继承方式  原型链继承function Parent () {     this.name = &amp;apos;张三&amp;apos;;     this.friends=[ &amp;apos;李四&amp;apos;, &amp;apos;王五&amp;apos;]; }  Parent.prototype.getName = function () {     console.lo">
+<meta name="description" content="js学习笔记，原型对象、原型链、继承。js常用的几种继承方式  原型链继承12345678910111213141516171819202122function Parent () &amp;#123;    this.name = &apos;张三&apos;;    this.friends=[ &apos;李四&apos;, &apos;王五&apos;];&amp;#125;Parent.prototype.getName = function () &amp;#123;">
 <meta name="keywords" content="js">
 <meta property="og:type" content="article">
 <meta property="og:title" content="js学习笔记-原型继承">
 <meta property="og:url" content="http://yoursite.com/2017/08/01/2017-08-01-js-prototype-inherit/index.html">
 <meta property="og:site_name" content="花开半夏">
-<meta property="og:description" content="js学习笔记，原型对象、原型链、继承。js常用的几种继承方式  原型链继承function Parent () {     this.name = &amp;apos;张三&amp;apos;;     this.friends=[ &amp;apos;李四&amp;apos;, &amp;apos;王五&amp;apos;]; }  Parent.prototype.getName = function () {     console.lo">
+<meta property="og:description" content="js学习笔记，原型对象、原型链、继承。js常用的几种继承方式  原型链继承12345678910111213141516171819202122function Parent () &amp;#123;    this.name = &apos;张三&apos;;    this.friends=[ &apos;李四&apos;, &apos;王五&apos;];&amp;#125;Parent.prototype.getName = function () &amp;#123;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-21T15:15:47.830Z">
+<meta property="og:updated_time" content="2017-11-06T13:22:20.015Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js学习笔记-原型继承">
-<meta name="twitter:description" content="js学习笔记，原型对象、原型链、继承。js常用的几种继承方式  原型链继承function Parent () {     this.name = &amp;apos;张三&amp;apos;;     this.friends=[ &amp;apos;李四&amp;apos;, &amp;apos;王五&amp;apos;]; }  Parent.prototype.getName = function () {     console.lo">
+<meta name="twitter:description" content="js学习笔记，原型对象、原型链、继承。js常用的几种继承方式  原型链继承12345678910111213141516171819202122function Parent () &amp;#123;    this.name = &apos;张三&apos;;    this.friends=[ &apos;李四&apos;, &apos;王五&apos;];&amp;#125;Parent.prototype.getName = function () &amp;#123;">
 
 
 
@@ -343,29 +343,8 @@
 
       
         <p>js学习笔记，原型对象、原型链、继承。js常用的几种继承方式 </p>
-<h4 id="原型链继承"><a href="#原型链继承" class="headerlink" title="原型链继承"></a>原型链继承</h4><pre><code>function Parent () {
-    this.name = &apos;张三&apos;;
-    this.friends=[ &apos;李四&apos;, &apos;王五&apos;];
-}
-
-Parent.prototype.getName = function () {
-    console.log(this.name);
-}
-
-function Child () {
-
-}
-
-Child.prototype = new Parent();
-
-var child1 = new Child();
-child1.friends.push(&apos;赵六&apos;);
-console.log(child1.getName()) // 张三
-console.log(child1.friends) // [ &apos;李四&apos;, &apos;王五&apos;,&apos;赵六&apos;]
-
-var child2 = new Child();
-console.log(child2.friends); // [ &apos;李四&apos;, &apos;王五&apos;,&apos;赵六&apos;]
-</code></pre><p>缺点：</p>
+<h4 id="原型链继承"><a href="#原型链继承" class="headerlink" title="原型链继承"></a>原型链继承</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Parent</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.name = <span class="string">'张三'</span>;</div><div class="line">    <span class="keyword">this</span>.friends=[ <span class="string">'李四'</span>, <span class="string">'王五'</span>];</div><div class="line">&#125;</div><div class="line"></div><div class="line">Parent.prototype.getName = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Child</span> (<span class="params"></span>) </span>&#123;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">Child.prototype = <span class="keyword">new</span> Parent();</div><div class="line"></div><div class="line"><span class="keyword">var</span> child1 = <span class="keyword">new</span> Child();</div><div class="line">child1.friends.push(<span class="string">'赵六'</span>);</div><div class="line"><span class="built_in">console</span>.log(child1.getName()) <span class="comment">// 张三</span></div><div class="line"><span class="built_in">console</span>.log(child1.friends) <span class="comment">// [ '李四', '王五','赵六']</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> child2 = <span class="keyword">new</span> Child();</div><div class="line"><span class="built_in">console</span>.log(child2.friends); <span class="comment">// [ '李四', '王五','赵六']</span></div></pre></td></tr></table></figure>
+<p>缺点：</p>
 <ul>
 <li><p>1.引用类型的属性被所有实例共享</p>
 </li>
@@ -373,24 +352,8 @@ console.log(child2.friends); // [ &apos;李四&apos;, &apos;王五&apos;,&apos;�
 </li>
 </ul>
 <a id="more"></a>
-<h4 id="借用构造函数-类式继承"><a href="#借用构造函数-类式继承" class="headerlink" title="借用构造函数 (类式继承)"></a>借用构造函数 (类式继承)</h4><pre><code>function Parent(name) {
-    this.name = name;
-    this.age = 10;
-}
-Parent.prototype.doSomthing = function() {
-    console.log(&apos;parent do something!&apos;);
-};
-function Child(name) {
-    // 通过call,apply 改变对象的this指向来继承
-    Parent.call(this, name);
-    // Parent.apply(this, arguments);
-}
-Child.prototype.doSomthing = function() {
-    console.log(&apos;child do something!&apos;);
-};
-var child = new Child(&apos;张三&apos;);
-child.doSomthing(); // TypeError: child.doSomthing is not a function
-</code></pre><p>优点：</p>
+<h4 id="借用构造函数-类式继承"><a href="#借用构造函数-类式继承" class="headerlink" title="借用构造函数 (类式继承)"></a>借用构造函数 (类式继承)</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Parent</span>(<span class="params">name</span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.name = name;</div><div class="line">    <span class="keyword">this</span>.age = <span class="number">10</span>;</div><div class="line">&#125;</div><div class="line">Parent.prototype.doSomthing = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'parent do something!'</span>);</div><div class="line">&#125;;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Child</span>(<span class="params">name</span>) </span>&#123;</div><div class="line">    <span class="comment">// 通过call,apply 改变对象的this指向来继承</span></div><div class="line">    Parent.call(<span class="keyword">this</span>, name);</div><div class="line">    <span class="comment">// Parent.apply(this, arguments);</span></div><div class="line">&#125;</div><div class="line">Child.prototype.doSomthing = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'child do something!'</span>);</div><div class="line">&#125;;</div><div class="line"><span class="keyword">var</span> child = <span class="keyword">new</span> Child(<span class="string">'张三'</span>);</div><div class="line">child.doSomthing(); <span class="comment">// TypeError: child.doSomthing is not a function</span></div></pre></td></tr></table></figure>
+<p>优点：</p>
 <ul>
 <li><p>避免了引用类型的属性被所有实例共享</p>
 </li>
@@ -404,30 +367,8 @@ child.doSomthing(); // TypeError: child.doSomthing is not a function
 <li><p>方法都在构造函数中定义，每次创建实例都会创建一遍方法</p>
 </li>
 </ul>
-<h4 id="组合式继承-原型-构造函数继承"><a href="#组合式继承-原型-构造函数继承" class="headerlink" title="组合式继承(原型+构造函数继承)"></a>组合式继承(原型+构造函数继承)</h4><pre><code>function Parent(name) {
-    this.name = name;
-    this.age = 10;
-}
-Parent.prototype.say = function() {
-    console.log(&apos;parent name is &apos; + this.name + &apos;!&apos;);
-};
-Parent.prototype.doSomthing = function() {
-    console.log(&apos;parent do something!&apos;);
-};
-function Child(name) {
-    // 通过call,apply 改变对象的this指向来继承
-    Parent.call(this, name);  // 第二次调用 
-    // Parent.apply(this, arguments);
-}
-Child.prototype = new Parent(&apos;father&apos;);  // 第一次调用
-Child.prototype.constructor = Child;
-Child.prototype.say = function() {
-    console.log(&apos;child name is &apos; + this.name + &apos;!&apos;);
-};
-var child = new Child(&apos;张三&apos;);
-child.say(); // child name: 张三
-child.doSomthing(); // parent do something!
-</code></pre><p>优点：</p>
+<h4 id="组合式继承-原型-构造函数继承"><a href="#组合式继承-原型-构造函数继承" class="headerlink" title="组合式继承(原型+构造函数继承)"></a>组合式继承(原型+构造函数继承)</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Parent</span>(<span class="params">name</span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.name = name;</div><div class="line">    <span class="keyword">this</span>.age = <span class="number">10</span>;</div><div class="line">&#125;</div><div class="line">Parent.prototype.say = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'parent name is '</span> + <span class="keyword">this</span>.name + <span class="string">'!'</span>);</div><div class="line">&#125;;</div><div class="line">Parent.prototype.doSomthing = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'parent do something!'</span>);</div><div class="line">&#125;;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Child</span>(<span class="params">name</span>) </span>&#123;</div><div class="line">    <span class="comment">// 通过call,apply 改变对象的this指向来继承</span></div><div class="line">    Parent.call(<span class="keyword">this</span>, name);  <span class="comment">// 第二次调用 </span></div><div class="line">    <span class="comment">// Parent.apply(this, arguments);</span></div><div class="line">&#125;</div><div class="line">Child.prototype = <span class="keyword">new</span> Parent(<span class="string">'father'</span>);  <span class="comment">// 第一次调用</span></div><div class="line">Child.prototype.constructor = Child;</div><div class="line">Child.prototype.say = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'child name is '</span> + <span class="keyword">this</span>.name + <span class="string">'!'</span>);</div><div class="line">&#125;;</div><div class="line"><span class="keyword">var</span> child = <span class="keyword">new</span> Child(<span class="string">'张三'</span>);</div><div class="line">child.say(); <span class="comment">// child name: 张三</span></div><div class="line">child.doSomthing(); <span class="comment">// parent do something!</span></div></pre></td></tr></table></figure>
+<p>优点：</p>
 <ul>
 <li>融合原型链继承和构造函数的优点，是 JavaScript 中最常用的继承模式</li>
 </ul>
@@ -435,59 +376,18 @@ child.doSomthing(); // parent do something!
 <ul>
 <li>组合继承使用过程中会被调用两次：一次是创建子类型的时候，另一次是在子类型构造函数的内部。</li>
 </ul>
-<h4 id="原型式继承"><a href="#原型式继承" class="headerlink" title="原型式继承"></a>原型式继承</h4><p><em>在没有必要兴师动众创建构造函数，而只想让一个对象与另一个对象保持类似的情况下使用这种继承方式</em></p>
-<pre><code>function createObj(o) {
-    function F(){}
-    F.prototype = o;
-    return new F();
-}
-
-var obj = { name: &apos;张三&apos;, friends: [&apos;李四&apos;, &apos;王五&apos;] };
-var obj1 = object(obj);
-obj1.name = &apos;刘三好&apos;;
-obj1.friends.push(&apos;赵六&apos;);
-console.log(obj1.name); // 刘三好
-console.log(obj1.friends); // [&quot;李四&quot;, &quot;王五&quot;, &quot;赵六&quot;]
-var obj2 = object(obj);
-console.log(obj2.name); // 张三
-console.log(obj2.friends); // [&quot;李四&quot;, &quot;王五&quot;, &quot;赵六&quot;]
-</code></pre><p>缺点：</p>
+<h4 id="原型式继承"><a href="#原型式继承" class="headerlink" title="原型式继承"></a>原型式继承</h4><p><em>在没有必要兴师动众创建构造函数，而只想让一个对象与另一个对象保持类似的情况下使用这种继承方式</em><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">createObj</span>(<span class="params">o</span>) </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">F</span>(<span class="params"></span>)</span>&#123;&#125;</div><div class="line">    F.prototype = o;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> F();</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> obj = &#123; <span class="attr">name</span>: <span class="string">'张三'</span>, <span class="attr">friends</span>: [<span class="string">'李四'</span>, <span class="string">'王五'</span>] &#125;;</div><div class="line"><span class="keyword">var</span> obj1 = object(obj);</div><div class="line">obj1.name = <span class="string">'刘三好'</span>;</div><div class="line">obj1.friends.push(<span class="string">'赵六'</span>);</div><div class="line"><span class="built_in">console</span>.log(obj1.name); <span class="comment">// 刘三好</span></div><div class="line"><span class="built_in">console</span>.log(obj1.friends); <span class="comment">// ["李四", "王五", "赵六"]</span></div><div class="line"><span class="keyword">var</span> obj2 = object(obj);</div><div class="line"><span class="built_in">console</span>.log(obj2.name); <span class="comment">// 张三</span></div><div class="line"><span class="built_in">console</span>.log(obj2.friends); <span class="comment">// ["李四", "王五", "赵六"]</span></div></pre></td></tr></table></figure></p>
+<p>缺点：</p>
 <ul>
 <li>引用类型的属性值始终都会共享相应的值，这点跟原型链继承一样</li>
 </ul>
-<h4 id="寄生式继承"><a href="#寄生式继承" class="headerlink" title="寄生式继承"></a>寄生式继承</h4><p><em>创建一个仅用于封装继承过程的函数，该函数在内部以某种形式来做增强对象，最后返回对象。</em></p>
-<pre><code>function createObj (o) {
-    var clone = object.create(o);  // 创建对象
-    clone.sayName = function () {  // 增强对象
-        console.log(&apos;hi&apos;);
-    }
-    return clone;  // 返回指定对象
-}
-</code></pre><p>缺点：</p>
+<h4 id="寄生式继承"><a href="#寄生式继承" class="headerlink" title="寄生式继承"></a>寄生式继承</h4><p><em>创建一个仅用于封装继承过程的函数，该函数在内部以某种形式来做增强对象，最后返回对象。</em><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">createObj</span> (<span class="params">o</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> clone = object.create(o);  <span class="comment">// 创建对象</span></div><div class="line">    clone.sayName = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;  <span class="comment">// 增强对象</span></div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'hi'</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> clone;  <span class="comment">// 返回指定对象</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>缺点：</p>
 <ul>
 <li>跟借用构造函数模式一样，每次创建对象都会创建一遍方法。</li>
 </ul>
-<h4 id="寄生组合式继承"><a href="#寄生组合式继承" class="headerlink" title="寄生组合式继承"></a>寄生组合式继承</h4><pre><code>function Parent (name) {
-    this.name = name;
-    this.colors = [&apos;red&apos;, &apos;blue&apos;, &apos;green&apos;];
-}
-
-Parent.prototype.getName = function () {
-    console.log(this.name)
-}
-
-function Child (name, age) {
-    Parent.call(this, name);
-    this.age = age;
-}
-
-var F = function () {};
-F.prototype = Parent.prototype;
-Child.prototype = new F();
-
-var child1 = new Child(&apos;张三&apos;, &apos;20&apos;);
-console.log(child1.name);  // 张三  
-</code></pre><p>优点：</p>
+<h4 id="寄生组合式继承"><a href="#寄生组合式继承" class="headerlink" title="寄生组合式继承"></a>寄生组合式继承</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Parent</span> (<span class="params">name</span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.name = name;</div><div class="line">    <span class="keyword">this</span>.colors = [<span class="string">'red'</span>, <span class="string">'blue'</span>, <span class="string">'green'</span>];</div><div class="line">&#125;</div><div class="line"></div><div class="line">Parent.prototype.getName = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Child</span> (<span class="params">name, age</span>) </span>&#123;</div><div class="line">    Parent.call(<span class="keyword">this</span>, name);</div><div class="line">    <span class="keyword">this</span>.age = age;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> F = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;;</div><div class="line">F.prototype = Parent.prototype;</div><div class="line">Child.prototype = <span class="keyword">new</span> F();</div><div class="line"></div><div class="line"><span class="keyword">var</span> child1 = <span class="keyword">new</span> Child(<span class="string">'张三'</span>, <span class="string">'20'</span>);</div><div class="line"><span class="built_in">console</span>.log(child1.name);  <span class="comment">// 张三</span></div></pre></td></tr></table></figure>
+<p>优点：</p>
 <ul>
 <li>跟组合式继承的区别在于，不需要在一次实例中调用两次父类的构造函数</li>
 </ul>
