@@ -271,9 +271,9 @@
 
       <h2 class="post-title">
         
-            <a class="post-title-link" href="/2017/12/01/2017-12-01-vuex-modules/" itemprop="url">
+            <a class="post-title-link" href="/2017/12/01/2017-12-05-ubuntu初体验/" itemprop="url">
               
-                <span itemprop="name">vuex的modules模块</span>
+                <span itemprop="name">ubuntu初体验(长期更新)</span>
               
             </a>
         
@@ -308,9 +308,9 @@
 
       <h2 class="post-title">
         
-            <a class="post-title-link" href="/2017/12/01/2017-12-05-ubuntu初体验/" itemprop="url">
+            <a class="post-title-link" href="/2017/12/01/2017-12-01-vuex-modules/" itemprop="url">
               
-                <span itemprop="name">ubuntu初体验(长期更新)</span>
+                <span itemprop="name">vuex的modules模块</span>
               
             </a>
         
@@ -646,6 +646,40 @@
 
 
           
+    <div onclick="showGitment()" id="gitment_title" class="gitment_title">显示 Gitment 评论</div>
+    <div id="container" style="display:none"></div>
+    <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+    <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+    <script>
+    const myTheme = {
+      render(state, instance) {
+        const container = document.createElement('div');
+        container.lang = "en-US";
+        container.className = 'gitment-container gitment-root-container';
+        container.appendChild(instance.renderHeader(state, instance));
+        container.appendChild(instance.renderEditor(state, instance));
+        container.appendChild(instance.renderComments(state, instance));
+        container.appendChild(instance.renderFooter(state, instance));
+        return container;
+      }
+    }
+    function showGitment() {
+      $("#gitment_title").attr("style", "display:none");
+      $("#container").attr("style", "").addClass("gitment_container");
+      var gitment = new Gitment({
+        id: window.location.pathname,
+        theme: myTheme,
+        owner: 'aromameng',
+        repo: 'aromameng.github.io',
+        oauth: {
+          client_id: '7dcf7ff17c22c2029721',
+          client_secret: '7a9b2e24133335b1d645af9125fdf1d2aa4fc2a7'
+        }
+      });
+      gitment.render('container');
+    }
+    </script>
+
 
         </div>
         
