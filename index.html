@@ -341,29 +341,19 @@
 
       
         
-          
-            <p>整理下js中简单的四则运算，以后别又被搞晕了</p>
+          <p>整理下js中简单的四则运算，以后别又被搞晕了</p>
 <h3 id="加法操作"><a href="#加法操作" class="headerlink" title="加法操作"></a>加法操作</h3><p>加法操作分为以下几种情况：</p>
 <h4 id="字符串-数字"><a href="#字符串-数字" class="headerlink" title="字符串+数字"></a>字符串+数字</h4><p>数字转换成字符串，然后相加</p>
 <h4 id="字符串-布尔"><a href="#字符串-布尔" class="headerlink" title="字符串+ 布尔"></a>字符串+ 布尔</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="literal">true</span> + <span class="string">'3'</span>  <span class="comment">// "true3"</span></div><div class="line"><span class="string">'3'</span>+<span class="literal">true</span>   <span class="comment">// "3true"</span></div></pre></td></tr></table></figure>
 <h4 id="字符串-null-或undefined"><a href="#字符串-null-或undefined" class="headerlink" title="字符串 + null 或undefined"></a>字符串 + null 或undefined</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="string">'344'</span>+<span class="literal">null</span>  <span class="comment">// "344null"</span></div><div class="line"><span class="string">'344'</span>+ <span class="literal">undefined</span>  <span class="comment">// "344undefined"</span></div></pre></td></tr></table></figure>
 <h4 id="对象-字符串或数字"><a href="#对象-字符串或数字" class="headerlink" title="对象 + 字符串或数字"></a>对象 + 字符串或数字</h4><p>对象会进行toString()转换<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a=&#123;<span class="attr">a</span>:<span class="number">23</span>&#125;</div><div class="line">a + <span class="number">23</span>   <span class="comment">// "[object Object]23"</span></div><div class="line"><span class="number">243</span><span class="string">' + a  // "243[object Object]"</span></div><div class="line"><span class="string">a + true  // "[object Object]true"</span></div><div class="line"><span class="string">a + null  // "[object Object]null"</span></div></pre></td></tr></table></figure></p>
-<h4 id="数字-布尔"><a href="#数字-布尔" class="headerlink" title="数字 + 布尔"></a>数字 + 布尔</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="number">3</span>+<span class="literal">true</span>   <span class="comment">// 4</span></div><div class="line"><span class="literal">true</span> +<span class="number">3</span>   <span class="comment">// 4</span></div></pre></td></tr></table></figure>
-<h3 id="数字-和-字符串-布尔-对象等-进行-、-、-操作"><a href="#数字-和-字符串-布尔-对象等-进行-、-、-操作" class="headerlink" title="数字 和 字符串 | 布尔 | 对象等 进行 -、*、% 操作"></a>数字 和 字符串 | 布尔 | 对象等 进行 -、*、% 操作</h3><p>字符串会先转换成数字，然后再进行其他运算</p>
-<p>其他减、乘、除等算法，都是先把字符串、布尔、对象转换成数字，然后再进行运算。如果转换失败，则会返回NaN</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="string">'2'</span>+<span class="number">13</span>  <span class="comment">// "213"</span></div><div class="line"><span class="number">33</span>+<span class="string">'2'</span>  <span class="comment">// "332"</span></div><div class="line"><span class="number">2</span>-<span class="string">'334'</span>   <span class="comment">// -332</span></div><div class="line"><span class="string">'333'</span> <span class="number">-34</span>  <span class="comment">// 299</span></div><div class="line"></div><div class="line"><span class="string">'abc'</span> - <span class="number">2</span>  <span class="comment">// NaN</span></div><div class="line"><span class="string">'3453'</span> - <span class="literal">true</span>  <span class="comment">// 3452</span></div><div class="line"><span class="string">'abc'</span> -<span class="literal">true</span> <span class="comment">// NaN</span></div><div class="line"></div><div class="line"><span class="number">355</span> - <span class="literal">null</span>  <span class="comment">// 355</span></div><div class="line"><span class="string">'43535'</span> - <span class="literal">null</span> <span class="comment">// 43535</span></div><div class="line"></div><div class="line"><span class="number">355</span> - <span class="literal">undefined</span> <span class="comment">// NaN</span></div><div class="line"><span class="string">'33'</span> - <span class="literal">undefined</span>  <span class="comment">// NaN</span></div></pre></td></tr></table></figure>
-<h4 id="Number-和-parseInt的差异"><a href="#Number-和-parseInt的差异" class="headerlink" title="Number 和 parseInt的差异"></a>Number 和 parseInt的差异</h4><p>Number （类型转换） 对不能转换成数字的字符串，返回NaN</p>
-<p>parseInt （解析） 会忽略非数字字符，只返回数字<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">parseInt</span>(<span class="string">'4534'</span>) <span class="comment">// 4534</span></div><div class="line"><span class="built_in">Number</span>(<span class="string">'4534'</span>)     <span class="comment">// 4534</span></div><div class="line"></div><div class="line"><span class="built_in">parseInt</span>(<span class="string">'4534avc'</span>) <span class="comment">// 4534</span></div><div class="line"><span class="built_in">Number</span>(<span class="string">'4534avc'</span>)     <span class="comment">// NaN</span></div><div class="line"></div><div class="line"><span class="comment">// 对布尔的操作</span></div><div class="line"><span class="built_in">parseInt</span>(<span class="literal">true</span>) <span class="comment">// NaN</span></div><div class="line"><span class="built_in">Number</span>(<span class="literal">true</span>)      <span class="comment">// 1</span></div><div class="line"></div><div class="line"><span class="comment">// 对对象的操作</span></div><div class="line"><span class="built_in">parseInt</span>(a)  <span class="comment">// NaN</span></div><div class="line"><span class="built_in">Number</span>(a)   <span class="comment">// NaN</span></div></pre></td></tr></table></figure></p>
-<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><ul>
-<li><p>“+” 也可以当做字符串连接符，因此，进行”+” 运算时，如果一边有字符串或者对象，则另外的类型会先转换成字符，再进行字符串连接操作。</p>
-<p> 如果两边都无字符串或对象，则会当成是加法运算</p>
-</li>
-<li>其他 “-“、 “*”、 “%” 等操作，都是非数字类型转为数字类型，再进行运算，转换失败则返回NaN</li>
-<li>null 跟数字运算，会先转换成 0 </li>
-<li>undefined 跟数字运算，会返回NaN</li>
-</ul>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/12/12/2017-12-12-js-operation/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -660,8 +650,7 @@
 
       
         
-          
-            <p>因为window的各种兼容问题，所以想体验下linux系统开发环境，于是就有了这篇记录文。</p>
+          <p>因为window的各种兼容问题，所以想体验下linux系统开发环境，于是就有了这篇记录文。</p>
 <h5 id="1、VMware下载并安装"><a href="#1、VMware下载并安装" class="headerlink" title="1、VMware下载并安装"></a>1、VMware下载并安装</h5><h5 id="2、ubuntu系统下载（官网下载ios格式文件）"><a href="#2、ubuntu系统下载（官网下载ios格式文件）" class="headerlink" title="2、ubuntu系统下载（官网下载ios格式文件）"></a>2、ubuntu系统下载（官网下载ios格式文件）</h5><h5 id="3、系统安装"><a href="#3、系统安装" class="headerlink" title="3、系统安装"></a>3、系统安装</h5><p>参考下面地址安装 <a href="https://blog.csdn.net/colin_lisicong/article/details/70193539" target="_blank" rel="external">https://blog.csdn.net/colin_lisicong/article/details/70193539</a></p>
 <h5 id="4、其他软件的一些安装链接和教程"><a href="#4、其他软件的一些安装链接和教程" class="headerlink" title="4、其他软件的一些安装链接和教程"></a>4、其他软件的一些安装链接和教程</h5><ul>
 <li>安装vscode</li>
@@ -671,18 +660,13 @@
 <li>搜狗输入法</li>
 </ul>
 <p><a href="https://www.cnblogs.com/darklights/p/7722861.html" target="_blank" rel="external">https://www.cnblogs.com/darklights/p/7722861.html</a></p>
-<ul>
-<li>安装node</li>
-</ul>
-<p>两种方法：</p>
-<p>1、apt-get 安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install nodejs</div><div class="line">sudo apt-get install npm</div><div class="line"></div><div class="line">sudo apt install nodejs-legacy</div></pre></td></tr></table></figure></p>
-<p>2、官网下载安装 <a href="http://cnodejs.org/topic/53a92af6c3ee0b58203258fe" target="_blank" rel="external">http://cnodejs.org/topic/53a92af6c3ee0b58203258fe</a></p>
-<ul>
-<li>git 安装</li>
-</ul>
-<p><a href="https://www.linuxidc.com/Linux/2016-09/135527.htm" target="_blank" rel="external">https://www.linuxidc.com/Linux/2016-09/135527.htm</a></p>
-<h5 id="5、linux的一些常用命令"><a href="#5、linux的一些常用命令" class="headerlink" title="5、linux的一些常用命令"></a>5、linux的一些常用命令</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ls  // 查看当前文件和目录</div><div class="line">shutdown -r now 或者 reboot  // 重启</div></pre></td></tr></table></figure>
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/12/01/2017-12-05-ubuntu-test/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
