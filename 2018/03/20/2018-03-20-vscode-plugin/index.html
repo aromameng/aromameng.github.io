@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="nodeJs," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -79,18 +79,17 @@
 
 
 
-<meta name="description" content="使用nodejs搭建本地服务">
-<meta name="keywords" content="nodeJs">
+<meta name="description" content="记录下使用Vscode中用的一些插件。从sublime、webStorm 到 Atom，再到vsCode 。 目前用的最顺心的是vsCode。理由很简单，打开快、插件也越来越齐全。。。  这个工具还是用NodeJs开发的，这个也是要学习的，路漫漫。。。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用nodejs搭建本地服务">
-<meta property="og:url" content="http://yoursite.com/2017/05/17/2017-05-17-build-node-server/index.html">
+<meta property="og:title" content="Vscode插件">
+<meta property="og:url" content="http://yoursite.com/2018/03/20/2018-03-20-vscode-plugin/index.html">
 <meta property="og:site_name" content="花开半夏">
-<meta property="og:description" content="使用nodejs搭建本地服务">
+<meta property="og:description" content="记录下使用Vscode中用的一些插件。从sublime、webStorm 到 Atom，再到vsCode 。 目前用的最顺心的是vsCode。理由很简单，打开快、插件也越来越齐全。。。  这个工具还是用NodeJs开发的，这个也是要学习的，路漫漫。。。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-20T08:02:39.211Z">
+<meta property="og:updated_time" content="2018-05-10T13:36:32.503Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用nodejs搭建本地服务">
-<meta name="twitter:description" content="使用nodejs搭建本地服务">
+<meta name="twitter:title" content="Vscode插件">
+<meta name="twitter:description" content="记录下使用Vscode中用的一些插件。从sublime、webStorm 到 Atom，再到vsCode 。 目前用的最顺心的是vsCode。理由很简单，打开快、插件也越来越齐全。。。  这个工具还是用NodeJs开发的，这个也是要学习的，路漫漫。。。">
 
 
 
@@ -120,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/05/17/2017-05-17-build-node-server/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/03/20/2018-03-20-vscode-plugin/"/>
 
 
 
 
 
-  <title>使用nodejs搭建本地服务 | 花开半夏</title>
+  <title>Vscode插件 | 花开半夏</title>
   
 
 
@@ -253,7 +252,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/17/2017-05-17-build-node-server/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/20/2018-03-20-vscode-plugin/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="aroma">
@@ -270,7 +269,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">使用nodejs搭建本地服务</h1>
+          <h1 class="post-title" itemprop="name headline">Vscode插件</h1>
         
 
         <div class="post-meta">
@@ -282,8 +281,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-17T00:00:00+08:00">
-                2017-05-17
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-20T00:00:00+08:00">
+                2018-03-20
               </time>
             
 
@@ -292,6 +291,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/其他/" itemprop="url" rel="index">
+                    <span itemprop="name">其他</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -320,20 +341,18 @@
       
 
       
-        <p>使用nodejs搭建本地服务 <a id="more"></a></p>
-<p>新建文件server.js</p>
-<pre><code>var express = require(&apos;express&apos;),
-    proxyMiddleware = require(&apos;http-proxy-middleware&apos;),
-    open = require(&apos;open&apos;);
-
-var app = express();
-app.use(express.static(__dirname /*+ &apos;/docs&apos; */ ));
-app.listen(3000, function () {
-    console.log(&apos;服务器端口:&apos; + 3000);
-    console.log(&apos;正在打开默认浏览器...&apos;);
-    open(&apos;http://localhost:3000&apos; /*+ config.port*/ );
-});
-</code></pre><p>运行 node server.js</p>
+        <p>记录下使用Vscode中用的一些插件。从sublime、webStorm 到 Atom，再到vsCode 。</p>
+<p>目前用的最顺心的是vsCode。理由很简单，打开快、插件也越来越齐全。。。 </p>
+<p>这个工具还是用NodeJs开发的，这个也是要学习的，路漫漫。。。</p>
+ <a id="more"></a>
+<h4 id="1、Auto-Close-Tag"><a href="#1、Auto-Close-Tag" class="headerlink" title="1、Auto Close Tag"></a>1、Auto Close Tag</h4><p>自动闭合标签</p>
+<h4 id="2、Path-Autocomplete"><a href="#2、Path-Autocomplete" class="headerlink" title="2、Path Autocomplete"></a>2、Path Autocomplete</h4><p>自动提示补齐路径</p>
+<h4 id="3、wpy-beautify"><a href="#3、wpy-beautify" class="headerlink" title="3、wpy-beautify"></a>3、wpy-beautify</h4><p>.wpy文件美化工具</p>
+<h4 id="4、vscode-icons"><a href="#4、vscode-icons" class="headerlink" title="4、vscode-icons"></a>4、vscode-icons</h4><p>不同文件格式标记不同图标，方便区分</p>
+<h4 id="5、React-Native-Tools"><a href="#5、React-Native-Tools" class="headerlink" title="5、React Native Tools"></a>5、React Native Tools</h4><p>React Native 代码提示</p>
+<h4 id="6、Vetur"><a href="#6、Vetur" class="headerlink" title="6、Vetur"></a>6、Vetur</h4><p>Vue 代码提示</p>
+<h4 id="7、javascript-snippets"><a href="#7、javascript-snippets" class="headerlink" title="7、javascript-snippets"></a>7、javascript-snippets</h4><p>javascript 语法提示</p>
+<h4 id="8、open-in-browser"><a href="#8、open-in-browser" class="headerlink" title="8、open in browser"></a>8、open in browser</h4><p>右键可以直接在浏览器打开当前页面</p>
 
       
     </div>
@@ -349,12 +368,6 @@ app.listen(3000, function () {
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/nodeJs/" rel="tag"># nodeJs</a>
-          
-        </div>
-      
 
       
       
@@ -364,8 +377,8 @@ app.listen(3000, function () {
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/21/2017-03-21-atom_use/" rel="next" title="Atom插件">
-                <i class="fa fa-chevron-left"></i> Atom插件
+              <a href="/2017/12/20/2017-12-20-linux-command/" rel="next" title="linux的常用命令">
+                <i class="fa fa-chevron-left"></i> linux的常用命令
               </a>
             
           </div>
@@ -374,8 +387,8 @@ app.listen(3000, function () {
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/05/18/2017-05-18-upload-img-base64/" rel="prev" title="图片上传相关操作">
-                图片上传相关操作 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/04/21/2018-04-21-react-native-flex/" rel="prev" title="react-native中的flex布局">
+                react-native中的flex布局 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -460,8 +473,17 @@ app.listen(3000, function () {
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -535,6 +557,22 @@ app.listen(3000, function () {
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、Auto-Close-Tag"><span class="nav-number">1.</span> <span class="nav-text">1、Auto Close Tag</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、Path-Autocomplete"><span class="nav-number">2.</span> <span class="nav-text">2、Path Autocomplete</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、wpy-beautify"><span class="nav-number">3.</span> <span class="nav-text">3、wpy-beautify</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4、vscode-icons"><span class="nav-number">4.</span> <span class="nav-text">4、vscode-icons</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5、React-Native-Tools"><span class="nav-number">5.</span> <span class="nav-text">5、React Native Tools</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6、Vetur"><span class="nav-number">6.</span> <span class="nav-text">6、Vetur</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7、javascript-snippets"><span class="nav-number">7.</span> <span class="nav-text">7、javascript-snippets</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8、open-in-browser"><span class="nav-number">8.</span> <span class="nav-text">8、open in browser</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
