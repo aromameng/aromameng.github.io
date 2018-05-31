@@ -308,6 +308,7 @@ blockquote {
   padding: 0 15px;
   color: #666;
   border-left: 4px solid #ddd;
+  background: #eee;
 }
 blockquote cite::before {
   content: "-";
@@ -1316,7 +1317,7 @@ pre .javascript .function {
   visibility: visible;
 }
 .posts-expand .post-body ul li {
-  list-style: circle;
+  list-style: initial;
 }
 .posts-expand .post-body img {
   box-sizing: border-box;
@@ -1326,6 +1327,9 @@ pre .javascript .function {
 }
 .posts-expand .post-body .fancybox img {
   margin: 0 auto 25px;
+}
+.post-body a {
+  color: #7f9eb2;
 }
 @media (max-width: 767px) {
   .posts-collapse {
@@ -1827,7 +1831,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ffbb9f;
+  background: #30faff;
 }
 .links-of-blogroll {
   font-size: 13px;
