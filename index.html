@@ -249,6 +249,166 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/10/2018-05-10-puppeteer/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="aroma">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="花开半夏">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/10/2018-05-10-puppeteer/" itemprop="url">puppeteer 初探</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-10T00:00:00+08:00">
+                2018-05-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/其他/" itemprop="url" rel="index">
+                    <span itemprop="name">其他</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="puppeteer介绍"><a href="#puppeteer介绍" class="headerlink" title="puppeteer介绍"></a>puppeteer介绍</h2><p>Puppeteer是一个用户界面自动化工具。它通过使用Chrome无界面模式和DevTools协议的组合来实现这一点。正如上面的引用所言，它使用一个更上层的API来封装其功能，让用户界面测试自动化变得轻而易举。</p>
+<p>它能做什么？</p>
+<ul>
+<li>生成网页截图或者 PDF </li>
+<li>高级爬虫，可以爬取大量异步渲染内容的网页 </li>
+<li>模拟键盘输入、表单自动提交、登录网页等，实现 UI 自动化测试 </li>
+<li>捕获站点的时间线，以便追踪你的网站，帮助分析网站性能问题</li>
+</ul>
+<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><p>API 地址 <a href="https://github.com/GoogleChrome/puppeteer/blob/v1.4.0/docs/api.md" target="_blank" rel="external">https://github.com/GoogleChrome/puppeteer/blob/v1.4.0/docs/api.md</a></p>
+<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><h3 id="截图"><a href="#截图" class="headerlink" title="截图"></a>截图</h3><p>首先实现一个简单的百度首页截图功能：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">const puppeteer = require(&apos;puppeteer&apos;);</div><div class="line"></div><div class="line">(async () =&gt; &#123;</div><div class="line">  // 打开浏览器</div><div class="line">  const browser = await puppeteer.launch();</div><div class="line">  // 打开页面</div><div class="line">  const page = await browser.newPage();</div><div class="line">  // 跳转页面</div><div class="line">  await page.goto(&quot;https://www.baidu.com/&quot;);</div><div class="line">  // 截图</div><div class="line">  await page.screenshot(&#123; path: &quot;baidu.png&quot; &#125;);</div><div class="line"></div><div class="line">  // 关闭浏览器</div><div class="line">  await browser.close();</div><div class="line">&#125;)();</div></pre></td></tr></table></figure></p>
+<h3 id="生成pdf"><a href="#生成pdf" class="headerlink" title="生成pdf"></a>生成pdf</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">const puppeteer = require(&apos;puppeteer&apos;);</div><div class="line"></div><div class="line">(async () =&gt; &#123;</div><div class="line">  const browser = await puppeteer.launch();</div><div class="line">  const page = await browser.newPage();</div><div class="line">  await page.goto(&apos;https://www.baidu.com/&apos;, &#123;waitUntil: &apos;networkidle2&apos;&#125;);</div><div class="line">  await page.pdf(&#123;path: &apos;baidu.pdf&apos;, format: &apos;A4&apos;&#125;);</div><div class="line"></div><div class="line">  await browser.close();</div><div class="line">&#125;)();</div></pre></td></tr></table></figure>
+<h3 id="爬取页面"><a href="#爬取页面" class="headerlink" title="爬取页面"></a>爬取页面</h3><p>以我的博客首页<a href="https://aromameng.github.io/" target="_blank" rel="external">https://aromameng.github.io/</a>为例，爬取每篇博客的标题。</p>
+<p>这个功能可以用于爬取api数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">const puppeteer = require(&quot;puppeteer&quot;);</div><div class="line">(async() =&gt; &#123;</div><div class="line">    const browser = await puppeteer.launch();</div><div class="line">    const page = await browser.newPage();</div><div class="line">    await page.goto(&quot;https://aromameng.github.io/&quot;, &#123; waitUntil: &quot;networkidle2&quot; &#125;);</div><div class="line">    // page.evaluate 中可以直接操作dom</div><div class="line">    const links = await page.evaluate(() =&gt; &#123;</div><div class="line">        const anchors = Array.from(document.querySelectorAll(&quot;.post-title-link&quot;));</div><div class="line">        return anchors.map(anchor =&gt; anchor.textContent);</div><div class="line">    &#125;);</div><div class="line">    // 打印标题</div><div class="line">    console.log(links.join(&quot;\n&quot;));</div><div class="line">    browser.close();</div><div class="line">&#125;)();</div></pre></td></tr></table></figure>
+<p>更多功能还在学习中。。。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li>github项目地址 <a href="https://github.com/GoogleChrome/puppeteer" target="_blank" rel="external">https://github.com/GoogleChrome/puppeteer</a></li>
+<li>Puppeteer 入门教程 <a href="http://www.r9it.com/20171106/puppeteer.html" target="_blank" rel="external">http://www.r9it.com/20171106/puppeteer.html</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/03/2018-05-03-css-two-column-equal-height/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1341,155 +1501,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/12/2017-12-14-js-type-conver/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="aroma">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="花开半夏">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/12/12/2017-12-14-js-type-conver/" itemprop="url">js类型转换</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-12T00:00:00+08:00">
-                2017-12-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">javascript</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>整理下js中 ‘==’ 的类型转换，这里确实好绕。 ‘===’ 这个就不用介绍了，不会发生类型转换，直接进行比较 </p>
-<p>主要分两种情况，类型相同和类型不同进行比较：</p>
-<h4 id="x，y类型相同"><a href="#x，y类型相同" class="headerlink" title="x，y类型相同"></a>x，y类型相同</h4><p>这一块比较简单，数字比大小，字符串比大小。</p>
-<p>需要注意的是 NaN != NaN ，另外对象比较又是个复杂的情况了<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="literal">NaN</span> == <span class="literal">NaN</span>  <span class="comment">// false</span></div><div class="line"><span class="string">'aa'</span> == <span class="string">'b'</span>  <span class="comment">// false</span></div><div class="line"><span class="comment">// ...</span></div></pre></td></tr></table></figure></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/12/12/2017-12-14-js-type-conver/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/12/2017-12-12-js-operation/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1641,7 +1652,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/05/2017-12-05-ubuntu-test/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/12/2017-12-14-js-type-conver/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="aroma">
@@ -1660,7 +1671,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/12/05/2017-12-05-ubuntu-test/" itemprop="url">ubuntu初体验(长期更新)</a></h1>
+                <a class="post-title-link" href="/2017/12/12/2017-12-14-js-type-conver/" itemprop="url">js类型转换</a></h1>
         
 
         <div class="post-meta">
@@ -1672,8 +1683,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-05T00:00:00+08:00">
-                2017-12-05
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-12T00:00:00+08:00">
+                2017-12-12
               </time>
             
 
@@ -1695,8 +1706,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/linux/" itemprop="url" rel="index">
-                    <span itemprop="name">linux</span>
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
                   </a>
                 </span>
 
@@ -1733,19 +1744,13 @@
 
       
         
-          <p>因为window的各种兼容问题，所以想体验下linux系统开发环境，于是就有了这篇记录文。</p>
-<h5 id="1、VMware下载并安装"><a href="#1、VMware下载并安装" class="headerlink" title="1、VMware下载并安装"></a>1、VMware下载并安装</h5><h5 id="2、ubuntu系统下载（官网下载ios格式文件）"><a href="#2、ubuntu系统下载（官网下载ios格式文件）" class="headerlink" title="2、ubuntu系统下载（官网下载ios格式文件）"></a>2、ubuntu系统下载（官网下载ios格式文件）</h5><h5 id="3、系统安装"><a href="#3、系统安装" class="headerlink" title="3、系统安装"></a>3、系统安装</h5><p>参考下面地址安装 <a href="https://blog.csdn.net/colin_lisicong/article/details/70193539" target="_blank" rel="external">https://blog.csdn.net/colin_lisicong/article/details/70193539</a></p>
-<h5 id="4、其他软件的一些安装链接和教程"><a href="#4、其他软件的一些安装链接和教程" class="headerlink" title="4、其他软件的一些安装链接和教程"></a>4、其他软件的一些安装链接和教程</h5><ul>
-<li>安装vscode</li>
-</ul>
-<p><a href="https://blog.csdn.net/bianlihao1993/article/details/71108233" target="_blank" rel="external">https://blog.csdn.net/bianlihao1993/article/details/71108233</a></p>
-<ul>
-<li>搜狗输入法</li>
-</ul>
-<p><a href="https://www.cnblogs.com/darklights/p/7722861.html" target="_blank" rel="external">https://www.cnblogs.com/darklights/p/7722861.html</a></p>
+          <p>整理下js中 ‘==’ 的类型转换，这里确实好绕。 ‘===’ 这个就不用介绍了，不会发生类型转换，直接进行比较 </p>
+<p>主要分两种情况，类型相同和类型不同进行比较：</p>
+<h4 id="x，y类型相同"><a href="#x，y类型相同" class="headerlink" title="x，y类型相同"></a>x，y类型相同</h4><p>这一块比较简单，数字比大小，字符串比大小。</p>
+<p>需要注意的是 NaN != NaN ，另外对象比较又是个复杂的情况了<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="literal">NaN</span> == <span class="literal">NaN</span>  <span class="comment">// false</span></div><div class="line"><span class="string">'aa'</span> == <span class="string">'b'</span>  <span class="comment">// false</span></div><div class="line"><span class="comment">// ...</span></div></pre></td></tr></table></figure></p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/12/05/2017-12-05-ubuntu-test/#more" rel="contents">
+            <a class="btn" href="/2017/12/12/2017-12-14-js-type-conver/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1837,7 +1842,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-count">36</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
