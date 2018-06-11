@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="react-native," />
+  <meta name="keywords" content="css," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="最近在学习react-native，在做项目过程中发现可用的样式真的少的可怜呀，很多想法不能通过css来实现，开发体验也是蛮痛苦的。 react-native 布局的核心是flex，这块还是蛮愉快的，不需要考虑兼容性，但跟web的flex还是有些区别。 下面记录会用到的react-native会用到的flex属性。 flexDirection该属性可以指定主轴的方向 可用值：  row、colum">
-<meta name="keywords" content="react-native">
+<meta name="description" content="产生原因因为retina屏的分辨率始终是普通屏幕的2倍,1px的边框在devicePixelRatio=2的retina屏下会显示成2px,所以在高清瓶下看着1px总是感觉变大了 主要有以下几种解决方式： 使用scale缩放利用伪元素和scale缩放12345678910li:before&amp;#123;  content: &amp;quot;&amp;quot;;  position: absolute;  bo">
+<meta name="keywords" content="css">
 <meta property="og:type" content="article">
-<meta property="og:title" content="react-native中的flex布局">
-<meta property="og:url" content="http://yoursite.com/2018/04/21/2018-04-21-react-native-flex/index.html">
+<meta property="og:title" content="移动端1px问题的解决方案">
+<meta property="og:url" content="http://yoursite.com/2018/05/10/2018-03-10-css-1px/index.html">
 <meta property="og:site_name" content="花开半夏">
-<meta property="og:description" content="最近在学习react-native，在做项目过程中发现可用的样式真的少的可怜呀，很多想法不能通过css来实现，开发体验也是蛮痛苦的。 react-native 布局的核心是flex，这块还是蛮愉快的，不需要考虑兼容性，但跟web的flex还是有些区别。 下面记录会用到的react-native会用到的flex属性。 flexDirection该属性可以指定主轴的方向 可用值：  row、colum">
+<meta property="og:description" content="产生原因因为retina屏的分辨率始终是普通屏幕的2倍,1px的边框在devicePixelRatio=2的retina屏下会显示成2px,所以在高清瓶下看着1px总是感觉变大了 主要有以下几种解决方式： 使用scale缩放利用伪元素和scale缩放12345678910li:before&amp;#123;  content: &amp;quot;&amp;quot;;  position: absolute;  bo">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-10T13:20:37.992Z">
+<meta property="og:updated_time" content="2018-06-11T14:24:21.083Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="react-native中的flex布局">
-<meta name="twitter:description" content="最近在学习react-native，在做项目过程中发现可用的样式真的少的可怜呀，很多想法不能通过css来实现，开发体验也是蛮痛苦的。 react-native 布局的核心是flex，这块还是蛮愉快的，不需要考虑兼容性，但跟web的flex还是有些区别。 下面记录会用到的react-native会用到的flex属性。 flexDirection该属性可以指定主轴的方向 可用值：  row、colum">
+<meta name="twitter:title" content="移动端1px问题的解决方案">
+<meta name="twitter:description" content="产生原因因为retina屏的分辨率始终是普通屏幕的2倍,1px的边框在devicePixelRatio=2的retina屏下会显示成2px,所以在高清瓶下看着1px总是感觉变大了 主要有以下几种解决方式： 使用scale缩放利用伪元素和scale缩放12345678910li:before&amp;#123;  content: &amp;quot;&amp;quot;;  position: absolute;  bo">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/04/21/2018-04-21-react-native-flex/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/05/10/2018-03-10-css-1px/"/>
 
 
 
 
 
-  <title>react-native中的flex布局 | 花开半夏</title>
+  <title>移动端1px问题的解决方案 | 花开半夏</title>
   
 
 
@@ -253,7 +253,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/21/2018-04-21-react-native-flex/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/10/2018-03-10-css-1px/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="aroma">
@@ -270,7 +270,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">react-native中的flex布局</h1>
+          <h1 class="post-title" itemprop="name headline">移动端1px问题的解决方案</h1>
         
 
         <div class="post-meta">
@@ -282,8 +282,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-21T00:00:00+08:00">
-                2018-04-21
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-10T00:00:00+08:00">
+                2018-05-10
               </time>
             
 
@@ -305,8 +305,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/react/" itemprop="url" rel="index">
-                    <span itemprop="name">react</span>
+                  <a href="/categories/css/" itemprop="url" rel="index">
+                    <span itemprop="name">css</span>
                   </a>
                 </span>
 
@@ -342,36 +342,22 @@
       
 
       
-        <p>最近在学习react-native，在做项目过程中发现可用的样式真的少的可怜呀，很多想法不能通过css来实现，开发体验也是蛮痛苦的。</p>
-<p>react-native 布局的核心是flex，这块还是蛮愉快的，不需要考虑兼容性，但跟web的flex还是有些区别。</p>
-<p>下面记录会用到的react-native会用到的flex属性。</p>
-<h3 id="flexDirection"><a href="#flexDirection" class="headerlink" title="flexDirection"></a>flexDirection</h3><p>该属性可以指定主轴的方向</p>
-<p>可用值：</p>
-<blockquote>
-<p>row、column</p>
-</blockquote>
-<p><em>!!! 注意和 Web 不同，React Native 默认的是 column</em></p>
-<h3 id="justifyContent"><a href="#justifyContent" class="headerlink" title="justifyContent"></a>justifyContent</h3><p>该属性用来定义伸缩项目沿主轴线的对齐方式</p>
-<p>可用值：</p>
-<blockquote>
-<p>flex-start、flex-end、center、space-between、space-around</p>
-</blockquote>
-<h3 id="alignItems"><a href="#alignItems" class="headerlink" title="alignItems"></a>alignItems</h3><p>该属性用来定义伸缩项目在伸缩容器的交叉轴上的对齐方式</p>
-<p>可用值：</p>
-<blockquote>
-<p>flex-start、flex-end、center、stretch</p>
-</blockquote>
-<h3 id="flexWrap"><a href="#flexWrap" class="headerlink" title="flexWrap"></a>flexWrap</h3><p>该属性主要用来指定伸缩容器的主轴线方向空间不足的情况下，是否换行以及如何换行</p>
-<p>可用值：</p>
-<blockquote>
-<p>nowrap、wrap</p>
-</blockquote>
-<h3 id="flex"><a href="#flex" class="headerlink" title="flex"></a>flex</h3><p>该属性定义伸缩项目的放大比例，默认值是 0。</p>
-<h3 id="alignSelf"><a href="#alignSelf" class="headerlink" title="alignSelf"></a>alignSelf</h3><p>该属性用来设置单独的伸缩项目在交叉轴上的对齐方式，会覆盖默认的对齐方式</p>
-<p>可用值：</p>
-<blockquote>
-<p>auto、flex-start、flex-end、center、stretch</p>
-</blockquote>
+        <h4 id="产生原因"><a href="#产生原因" class="headerlink" title="产生原因"></a>产生原因</h4><p>因为retina屏的分辨率始终是普通屏幕的2倍,1px的边框在devicePixelRatio=2的retina屏下会显示成2px,所以在高清瓶下看着1px总是感觉变大了</p>
+<p>主要有以下几种解决方式：</p>
+<h4 id="使用scale缩放"><a href="#使用scale缩放" class="headerlink" title="使用scale缩放"></a>使用scale缩放</h4><p>利用伪元素和scale缩放<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">li:before&#123;</div><div class="line">  content: &quot;&quot;;</div><div class="line">  position: absolute;</div><div class="line">  border-bottom: 1px solid #000;</div><div class="line">  width: 100%;</div><div class="line">  bottom: 0;</div><div class="line">  transform: scaleY(0.5);</div><div class="line">  -webkit-transform-origin: 0 100%;</div><div class="line">  transform-origin: 0 100%;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="背景渐变"><a href="#背景渐变" class="headerlink" title="背景渐变"></a>背景渐变</h4><p>使用背景渐变<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">li&#123;</div><div class="line">  list-style: none;</div><div class="line">  line-height: 50px;</div><div class="line">  height: 50px;</div><div class="line">  position: relative;</div><div class="line">  border: none;</div><div class="line">  background-image: -webkit-linear-gradient(90deg,#000,#000 50%,transparent 50%);</div><div class="line">  background-image: -moz-linear-gradient(90deg,#000,#000 50%,transparent 50%);</div><div class="line">  background-image: -o-linear-gradient(90deg,#000,#000 50%,transparent 50%);</div><div class="line">  background-image: linear-gradient(0,#000,#000 50%,transparent 50%);</div><div class="line">  background-size: 100% 1px;</div><div class="line">  background-repeat: no-repeat;</div><div class="line">  background-position: bottom;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="使用背景图片"><a href="#使用背景图片" class="headerlink" title="使用背景图片"></a>使用背景图片</h4><p>这种方式缺点蛮明显的，不能更改边框颜色</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">li&#123;</div><div class="line">  list-style: none;</div><div class="line">  line-height: 50px;</div><div class="line">  height: 50px;</div><div class="line">  position: relative;</div><div class="line">  border: 1px solid transparent;</div><div class="line">  border-image: url(border.gif) 2 repeat;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h4 id="viewport"><a href="#viewport" class="headerlink" title="viewport"></a>viewport</h4><p>这是之前淘宝移动端采取的方案</p>
+<p>它的原理是判断 window.devicePixelRatio的值，对viewport进行缩放，</p>
+<p>比如当 devicePixelRatio = 2 时，设置     </p>
+<meta name="viewport" content="initial-scale=0.5, maximum-scale=0.5, minimum-scale=0.5, user-scalable=no">
+
+<p>这种方法呢，当 devicePixelRatio = 3 时，在一些设备上效果不太好</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line">  !function(e)&#123;function t(a)&#123;if(i[a])return i[a].exports;var n=i[a]=&#123;exports:&#123;&#125;,id:a,loaded:!1&#125;;return e[a].call(n.exports,n,n.exports,t),n.loaded=!0,n.exports&#125;var i=&#123;&#125;;return t.m=e,t.c=i,t.p=&quot;&quot;,t(0)&#125;([function(e,t)&#123;&quot;use strict&quot;;Object.defineProperty(t,&quot;__esModule&quot;,&#123;value:!0&#125;);var i=window;t[&quot;default&quot;]=i.flex=function(e,t)&#123;var a=e||100,n=t||1,r=i.document,o=navigator.userAgent,d=o.match(/Android[\S\s]+AppleWebkit\/(\d&#123;3&#125;)/i),l=o.match(/U3\/((\d+|\.)&#123;5,&#125;)/i),c=l&amp;&amp;parseInt(l[1].split(&quot;.&quot;).join(&quot;&quot;),10)&gt;=80,p=navigator.appVersion.match(/(iphone|ipad|ipod)/gi),s=i.devicePixelRatio||1;p||d&amp;&amp;d[1]&gt;534||c||(s=1);var u=1/s,m=r.querySelector(&apos;meta[name=&quot;viewport&quot;]&apos;);m||(m=r.createElement(&quot;meta&quot;),m.setAttribute(&quot;name&quot;,&quot;viewport&quot;),r.head.appendChild(m)),m.setAttribute(&quot;content&quot;,&quot;width=device-width,user-scalable=no,initial-scale=&quot;+u+&quot;,maximum-scale=&quot;+u+&quot;,minimum-scale=&quot;+u),r.documentElement.style.fontSize=a/2*s*n+&quot;px&quot;&#125;,e.exports=t[&quot;default&quot;]&#125;]);</div><div class="line">  flex(100, 2);</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<p>另外还有淘宝 <a href="https://github.com/amfe/lib-flexible" target="_blank" rel="external">https://github.com/amfe/lib-flexible</a> 。它的原理是判断浏览器是否支持0.5px的属性，如果支持，则在html上增加.hairlines 类。</p>
+<p>综上几种方法，我也对比了几家大公司网站的做法，前面两种方法是比较常用的，关于兼容性问题的话，因为条件有限，没有办法去一一验证。但有大公司在前用，想必兼容性没有多大的问题。</p>
 
       
     </div>
@@ -389,7 +375,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/react-native/" rel="tag"># react-native</a>
+            <a href="/tags/css/" rel="tag"># css</a>
           
         </div>
       
@@ -402,8 +388,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/20/2018-03-20-vscode-plugin/" rel="next" title="vscode 插件">
-                <i class="fa fa-chevron-left"></i> vscode 插件
+              <a href="/2018/05/03/2018-05-03-css-two-column-equal-height/" rel="next" title="css实现左右等高布局">
+                <i class="fa fa-chevron-left"></i> css实现左右等高布局
               </a>
             
           </div>
@@ -412,8 +398,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/05/01/2018-05-01-css-layout/" rel="prev" title="css 三列布局">
-                css 三列布局 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/05/10/2018-05-10-puppeteer/" rel="prev" title="puppeteer 初探">
+                puppeteer 初探 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -592,7 +578,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#flexDirection"><span class="nav-number">1.</span> <span class="nav-text">flexDirection</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#justifyContent"><span class="nav-number">2.</span> <span class="nav-text">justifyContent</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#alignItems"><span class="nav-number">3.</span> <span class="nav-text">alignItems</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#flexWrap"><span class="nav-number">4.</span> <span class="nav-text">flexWrap</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#flex"><span class="nav-number">5.</span> <span class="nav-text">flex</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#alignSelf"><span class="nav-number">6.</span> <span class="nav-text">alignSelf</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#产生原因"><span class="nav-number">1.</span> <span class="nav-text">产生原因</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用scale缩放"><span class="nav-number">2.</span> <span class="nav-text">使用scale缩放</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#背景渐变"><span class="nav-number">3.</span> <span class="nav-text">背景渐变</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用背景图片"><span class="nav-number">4.</span> <span class="nav-text">使用背景图片</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#viewport"><span class="nav-number">5.</span> <span class="nav-text">viewport</span></a></li></ol></div>
             
 
           </div>

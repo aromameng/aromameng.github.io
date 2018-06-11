@@ -249,6 +249,155 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/12/2017-12-14-js-type-conver/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="aroma">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="花开半夏">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/12/2017-12-14-js-type-conver/" itemprop="url">js类型转换</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-12T00:00:00+08:00">
+                2017-12-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>整理下js中 ‘==’ 的类型转换，这里确实好绕。 ‘===’ 这个就不用介绍了，不会发生类型转换，直接进行比较 </p>
+<p>主要分两种情况，类型相同和类型不同进行比较：</p>
+<h4 id="x，y类型相同"><a href="#x，y类型相同" class="headerlink" title="x，y类型相同"></a>x，y类型相同</h4><p>这一块比较简单，数字比大小，字符串比大小。</p>
+<p>需要注意的是 NaN != NaN ，另外对象比较又是个复杂的情况了<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="literal">NaN</span> == <span class="literal">NaN</span>  <span class="comment">// false</span></div><div class="line"><span class="string">'aa'</span> == <span class="string">'b'</span>  <span class="comment">// false</span></div><div class="line"><span class="comment">// ...</span></div></pre></td></tr></table></figure></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/12/12/2017-12-14-js-type-conver/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/05/2017-12-05-ubuntu-test/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1663,206 +1812,6 @@ var minInNumbers = Math.min.apply(Math, numbers);
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/23/2017-06-23-git-base-use/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="aroma">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="花开半夏">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/06/23/2017-06-23-git-base-use/" itemprop="url">git常用命令</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-23T00:00:00+08:00">
-                2017-06-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/其他/" itemprop="url" rel="index">
-                    <span itemprop="name">其他</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>记录下工作中常用的那些git命令</p>
-<h4 id="1、分支相关"><a href="#1、分支相关" class="headerlink" title="1、分支相关"></a>1、分支相关</h4><ul>
-<li><p><code>git branch &lt;branch-name&gt;</code> 基于当前分支新建分支</p>
-</li>
-<li><p><code>git checkout -b &lt;branch-name&gt;</code> 基于当前分支新建分支，并切换到branch-name分支</p>
-</li>
-<li><p><code>git checkout &lt;branch-name&gt;</code>  切换到branch-name分支</p>
-</li>
-<li><p><code>git branch -m dev dev2</code> 将dev分支重命名为dev2分支</p>
-</li>
-<li><p><code>git branch</code> 查看当前分支</p>
-</li>
-<li><p><code>git branch -a</code> 查看本地和远程的所有分支</p>
-</li>
-<li><p><code>git branch -vv</code> 查看分支的跟踪情况</p>
-</li>
-<li><p><code>git branch -D &lt;branch-name&gt;</code> 删除本地分支</p>
-</li>
-<li><p><code>git branch -ｒ</code> 查看远程分支</p>
-</li>
-<li><p><code>git branch -r -d origin/&lt;branch-name&gt; ------- git push origin :&lt;branch-name&gt;</code> 删除远程分支 并推送到远程</p>
-</li>
-<li><p><code>git fetch origin &lt;branch-name&gt;</code>  拉取远程分支到本地</p>
-</li>
-</ul>
-<h4 id="2、用户相关"><a href="#2、用户相关" class="headerlink" title="2、用户相关"></a>2、用户相关</h4><ul>
-<li><p><code>git config --list</code>  查看用户配置信息</p>
-</li>
-<li><p><code>git config user.name XXX</code>  更改用户名</p>
-</li>
-<li><p><code>git config user.email XXX</code>  更改邮箱</p>
-</li>
-</ul>
-<h4 id="3、拉取推送相关"><a href="#3、拉取推送相关" class="headerlink" title="3、拉取推送相关"></a>3、拉取推送相关</h4><ul>
-<li><p><code>git merge dev</code> 合并dev分支到当前分支</p>
-</li>
-<li><p><code>git push origin dev -f</code> 同步本地dev分支到远程（慎重），会将远程分支覆盖，不融合</p>
-</li>
-</ul>
-<h4 id="4、标签相关"><a href="#4、标签相关" class="headerlink" title="4、标签相关"></a>4、标签相关</h4><ul>
-<li><p><code>git tag</code> 查看当前分支下的标签</p>
-</li>
-<li><p><code>git tag &lt;tagname&gt;</code> 创建轻量标签</p>
-</li>
-<li><p><code>git tag -a v0.1.2 -m &quot;0.1.2版本&quot;</code> 创建附注标签</p>
-</li>
-<li><p><code>git checkout &lt;tagname&gt;</code> 切换到标签</p>
-</li>
-<li><p><code>git tag -d &lt;tagname&gt;</code> 删除标签</p>
-</li>
-<li><p><code>git push origin --delete tag &lt;tagname&gt;</code> 删除远程标签</p>
-</li>
-<li><p><code>git push origin --tags</code> 将本地所有标签推送到远程</p>
-</li>
-<li><p><code>git push origin &lt;tagname&gt;</code> 将本地某个标签推送到远程</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/06/23/2017-06-23-git-base-use/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1917,7 +1866,7 @@ var minInNumbers = Math.min.apply(Math, numbers);
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-count">37</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
