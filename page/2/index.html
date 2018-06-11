@@ -249,7 +249,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/12/2017-12-14-js-type-conver/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/12/2017-12-12-js-operation/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="aroma">
@@ -268,7 +268,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/12/12/2017-12-14-js-type-conver/" itemprop="url">js类型转换</a></h1>
+                <a class="post-title-link" href="/2017/12/12/2017-12-12-js-operation/" itemprop="url">js运算整理</a></h1>
         
 
         <div class="post-meta">
@@ -341,13 +341,15 @@
 
       
         
-          <p>整理下js中 ‘==’ 的类型转换，这里确实好绕。 ‘===’ 这个就不用介绍了，不会发生类型转换，直接进行比较 </p>
-<p>主要分两种情况，类型相同和类型不同进行比较：</p>
-<h4 id="x，y类型相同"><a href="#x，y类型相同" class="headerlink" title="x，y类型相同"></a>x，y类型相同</h4><p>这一块比较简单，数字比大小，字符串比大小。</p>
-<p>需要注意的是 NaN != NaN ，另外对象比较又是个复杂的情况了<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="literal">NaN</span> == <span class="literal">NaN</span>  <span class="comment">// false</span></div><div class="line"><span class="string">'aa'</span> == <span class="string">'b'</span>  <span class="comment">// false</span></div><div class="line"><span class="comment">// ...</span></div></pre></td></tr></table></figure></p>
+          <p>整理下js中简单的四则运算，以后别又被搞晕了</p>
+<h3 id="加法操作"><a href="#加法操作" class="headerlink" title="加法操作"></a>加法操作</h3><p>加法操作分为以下几种情况：</p>
+<h4 id="字符串-数字"><a href="#字符串-数字" class="headerlink" title="字符串+数字"></a>字符串+数字</h4><p>数字转换成字符串，然后相加</p>
+<h4 id="字符串-布尔"><a href="#字符串-布尔" class="headerlink" title="字符串+ 布尔"></a>字符串+ 布尔</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="literal">true</span> + <span class="string">'3'</span>  <span class="comment">// "true3"</span></div><div class="line"><span class="string">'3'</span>+<span class="literal">true</span>   <span class="comment">// "3true"</span></div></pre></td></tr></table></figure>
+<h4 id="字符串-null-或undefined"><a href="#字符串-null-或undefined" class="headerlink" title="字符串 + null 或undefined"></a>字符串 + null 或undefined</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="string">'344'</span>+<span class="literal">null</span>  <span class="comment">// "344null"</span></div><div class="line"><span class="string">'344'</span>+ <span class="literal">undefined</span>  <span class="comment">// "344undefined"</span></div></pre></td></tr></table></figure>
+<h4 id="对象-字符串或数字"><a href="#对象-字符串或数字" class="headerlink" title="对象 + 字符串或数字"></a>对象 + 字符串或数字</h4><p>对象会进行toString()转换<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a=&#123;<span class="attr">a</span>:<span class="number">23</span>&#125;</div><div class="line">a + <span class="number">23</span>   <span class="comment">// "[object Object]23"</span></div><div class="line"><span class="number">243</span><span class="string">' + a  // "243[object Object]"</span></div><div class="line"><span class="string">a + true  // "[object Object]true"</span></div><div class="line"><span class="string">a + null  // "[object Object]null"</span></div></pre></td></tr></table></figure></p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/12/12/2017-12-14-js-type-conver/#more" rel="contents">
+            <a class="btn" href="/2017/12/12/2017-12-12-js-operation/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
