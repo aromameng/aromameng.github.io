@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="js," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="记录下js中比较常用的设计模式 单例模式 单例模式的定义是：保证一个类仅有一个实例，并提供一个访问它的全局访问点。  1234567891011121314151617181920class Singleton&amp;#123;  constructor(name)&amp;#123;    this.name = name    this.instance = null     &amp;#125;  static">
+<meta name="keywords" content="js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="javascript 中常用的几种设计模式">
+<meta property="og:url" content="http://yoursite.com/2018/05/20/2018-05-20-javascript-design-pattern/index.html">
+<meta property="og:site_name" content="花开半夏">
+<meta property="og:description" content="记录下js中比较常用的设计模式 单例模式 单例模式的定义是：保证一个类仅有一个实例，并提供一个访问它的全局访问点。  1234567891011121314151617181920class Singleton&amp;#123;  constructor(name)&amp;#123;    this.name = name    this.instance = null     &amp;#125;  static">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-06-13T14:16:30.950Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="javascript 中常用的几种设计模式">
+<meta name="twitter:description" content="记录下js中比较常用的设计模式 单例模式 单例模式的定义是：保证一个类仅有一个实例，并提供一个访问它的全局访问点。  1234567891011121314151617181920class Singleton&amp;#123;  constructor(name)&amp;#123;    this.name = name    this.instance = null     &amp;#125;  static">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/05/20/2018-05-20-javascript-design-pattern/"/>
+
+
+
+
+
+  <title>javascript 中常用的几种设计模式 | 花开半夏</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">花开半夏</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/20/2018-05-20-javascript-design-pattern/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="aroma">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="花开半夏">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">javascript 中常用的几种设计模式</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-20T00:00:00+08:00">
+                2018-05-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/js/" itemprop="url" rel="index">
+                    <span itemprop="name">js</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>记录下js中比较常用的设计模式</p>
+<h4 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h4><blockquote>
+<p>单例模式的定义是：保证一个类仅有一个实例，并提供一个访问它的全局访问点。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">class Singleton&#123;</div><div class="line">  constructor(name)&#123;</div><div class="line">    this.name = name</div><div class="line">    this.instance = null   </div><div class="line">  &#125;</div><div class="line">  static getInstance(name)&#123;</div><div class="line">    if(!this.instance)&#123;</div><div class="line">      this.instance = new Singleton(name)</div><div class="line">    &#125;</div><div class="line">    return this.instance</div><div class="line">  &#125;</div><div class="line">  getName()&#123;</div><div class="line">    console.log(this.name)</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var a = Singleton.getInstance(&apos;sven1&apos;);</div><div class="line">var b = Singleton.getInstance(&apos;sven2&apos;);</div><div class="line">// a 和 b 指向同一个实例</div><div class="line">console.log(a===b)  // true</div></pre></td></tr></table></figure>
+<h4 id="发布订阅模式"><a href="#发布订阅模式" class="headerlink" title="发布订阅模式"></a>发布订阅模式</h4><blockquote>
+<p>发布—订阅模式又叫观察者模式，它定义对象间的一种一对多的依赖关系，当一个对象的状<br>态发生改变时，所有依赖于它的对象都将得到通知。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line">class EventTarget &#123;</div><div class="line">    constructor() &#123;</div><div class="line">        this.handlers = &#123;&#125;;</div><div class="line">    &#125;</div><div class="line">    // 添加订阅</div><div class="line">    addHandler(type, handler) &#123;</div><div class="line">        if (typeof this.handlers[type] == &quot;undefined&quot;) &#123;</div><div class="line">            this.handlers[type] = [];</div><div class="line">        &#125;</div><div class="line">        this.handlers[type].push(handler);</div><div class="line">    &#125;</div><div class="line">    // 执行</div><div class="line">    fire(type) &#123;</div><div class="line">        var handlers = this.handlers[type];</div><div class="line">        if (!handlers) return;</div><div class="line">        for (var i = 0, len = handlers.length; i &lt; len; i++) &#123;</div><div class="line">            handlers[i]();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    // 移除订阅</div><div class="line">    removeHandler(type) &#123;</div><div class="line">        if (this.handlers[type] instanceof Array) &#123;</div><div class="line">            delete this.handlers[type];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var ex = new EventTarget();</div><div class="line">// 添加订阅者</div><div class="line">ex.addHandler(&apos;work&apos;, function () &#123;</div><div class="line">    console.log(&apos;work&apos;)</div><div class="line">&#125;)</div><div class="line">ex.addHandler(&apos;search&apos;, function () &#123;</div><div class="line">    console.log(&apos;search&apos;)</div><div class="line">&#125;)</div><div class="line">ex.addHandler(&apos;come&apos;, function () &#123;</div><div class="line">    console.log(&apos;come&apos;)</div><div class="line">&#125;)</div><div class="line">ex.addHandler(&apos;work&apos;, function () &#123;</div><div class="line">    console.log(&apos;work222&apos;)</div><div class="line">&#125;)</div><div class="line">ex.addHandler(&apos;work&apos;, function () &#123;</div><div class="line">    console.log(&apos;work3333&apos;)</div><div class="line">&#125;)</div><div class="line">// 发布消息</div><div class="line">ex.fire(&apos;work&apos;);</div><div class="line">ex.fire(&apos;search&apos;);</div><div class="line"></div><div class="line">// 执行打印</div><div class="line">work</div><div class="line">work222</div><div class="line">work3333</div><div class="line">search</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h4 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h4><blockquote>
+<p>代理模式是为一个对象提供一个代用品或占位符，以便控制对它的访问。</p>
+</blockquote>
+<p>这个模式比较常用，比如事件订阅中的事件委托。</p>
+<p>每个子列表都监听点击事件会非常消耗性能，一般的做法是把点击事件的监听放在外层的父元素上面.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&lt;ul id=&quot;box&quot;&gt;</div><div class="line">    &lt;li&gt;的借款方聚少离多&lt;/li&gt;</div><div class="line">    &lt;li&gt;的借款方聚少离多&lt;/li&gt;</div><div class="line">    &lt;li&gt;的借款方聚少离多&lt;/li&gt;</div><div class="line">    &lt;li&gt;的借款方聚少离多&lt;/li&gt;</div><div class="line">    &lt;li&gt;的借款方聚少离多&lt;/li&gt;</div><div class="line">    &lt;li&gt;的借款方聚少离多&lt;/li&gt;</div><div class="line">    &lt;li&gt;的借款方聚少离多&lt;/li&gt;</div><div class="line">&lt;/ul&gt;</div><div class="line"></div><div class="line">var box = document.querySelector(&apos;#box&apos;);</div><div class="line">box.addEventListener(&apos;click&apos;,function(e)&#123;</div><div class="line">  if(e.target &amp;&amp; e.target.nodeName.toUpperCase() === &apos;LI&apos;)&#123;</div><div class="line">    console.log(e.target.nodeName)</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h4 id="装饰者模式"><a href="#装饰者模式" class="headerlink" title="装饰者模式"></a>装饰者模式</h4><blockquote>
+<p>装饰者提供比继承更有弹性的替代方案。 装饰者用于包装同接口的对象，不仅允许你向方法添加行为，而且还可以将方法设置成原始对象调用（例如装饰者的构造函数）。</p>
+<p>装饰者用于通过重载方法的形式添加新功能，该模式可以在被装饰者前面或者后面加上自己的行为以达到特定的目的。</p>
+</blockquote>
+<p>如下面的例子， 在不改变原对象的基础上，不断增加新的功能：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">var plane = &#123;</div><div class="line">  fire: function () &#123;</div><div class="line">    console.log(&apos;发射子弹&apos;);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">plane.fire();</div><div class="line"></div><div class="line"></div><div class="line">// 增加发射散弹功能</div><div class="line">var fire1 = plane.fire;</div><div class="line">var shot = function () &#123;</div><div class="line">  console.log(&apos;发射散弹&apos;);</div><div class="line">&#125;</div><div class="line">plane.fire = function () &#123;</div><div class="line">  fire1();</div><div class="line">  shot();</div><div class="line">&#125;</div><div class="line">plane.fire();</div><div class="line"></div><div class="line"></div><div class="line">// 增加发射跟踪导弹功能</div><div class="line">var fire2 = plane.fire;</div><div class="line">var track = function () &#123;</div><div class="line">  console.log(&apos;发射跟踪导弹&apos;);</div><div class="line">&#125;</div><div class="line">plane.fire = function () &#123;</div><div class="line">  fire2();</div><div class="line">  track();</div><div class="line">&#125;</div><div class="line">plane.fire();</div></pre></td></tr></table></figure>
+<p>另外还有其他各种模式，例如：策略模式、组合模式、迭代器模板、适配器模式等等，更多内容可以查看设计模式相关的书籍。</p>
+<p>这篇文章大部分模式定义参考的是《javascript设计模式与开发实践》这本书，通俗易懂的一本书，适合初学者。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/js/" rel="tag"># js</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/10/2018-05-10-puppeteer/" rel="next" title="puppeteer 初探">
+                <i class="fa fa-chevron-left"></i> puppeteer 初探
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  
+    <div onclick="showGitment()" id="gitment_title" class="gitment_title">显示 Gitment 评论</div>
+    <div id="container" style="display:none"></div>
+    <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+    <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+    <script>
+    const myTheme = {
+      render(state, instance) {
+        const container = document.createElement('div');
+        container.lang = "en-US";
+        container.className = 'gitment-container gitment-root-container';
+        container.appendChild(instance.renderHeader(state, instance));
+        container.appendChild(instance.renderEditor(state, instance));
+        container.appendChild(instance.renderComments(state, instance));
+        container.appendChild(instance.renderFooter(state, instance));
+        return container;
+      }
+    }
+    function showGitment() {
+      $("#gitment_title").attr("style", "display:none");
+      $("#container").attr("style", "").addClass("gitment_container");
+      var gitment = new Gitment({
+        id: window.location.pathname,
+        theme: myTheme,
+        owner: 'aromameng',
+        repo: 'gitment',
+        oauth: {
+          client_id: '7dcf7ff17c22c2029721',
+          client_secret: '7a9b2e24133335b1d645af9125fdf1d2aa4fc2a7'
+        }
+      });
+      gitment.render('container');
+    }
+    </script>
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="aroma" />
+            
+              <p class="site-author-name" itemprop="name">aroma</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/aromameng" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#单例模式"><span class="nav-number">1.</span> <span class="nav-text">单例模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#发布订阅模式"><span class="nav-number">2.</span> <span class="nav-text">发布订阅模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代理模式"><span class="nav-number">3.</span> <span class="nav-text">代理模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#装饰者模式"><span class="nav-number">4.</span> <span class="nav-text">装饰者模式</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">aroma</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
